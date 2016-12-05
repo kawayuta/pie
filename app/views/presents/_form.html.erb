@@ -1,0 +1,64 @@
+
+<%= form_for(present) do |f| %>
+  <% if present.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(present.errors.count, "error") %> prohibited this present from being saved:</h2>
+
+      <ul>
+      <% present.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :enquete %>
+    <%= f.text_field :enquete %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brand %>
+    <%= f.select :brand , grouped_options_for_select(Present::SELECT_BRAND_OPTION) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :youage %>
+    <%= f.number_field :youage %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :man %>
+    <%= f.select :man , grouped_options_for_select(Present::SELECT_GENDER_OPTION) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cat %>
+    <%= f.select :cat , grouped_options_for_select(Present::SELECT_CATEGORY_OPTION) %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :amazon_url %>
+    <%= f.text_field :amazon_url %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

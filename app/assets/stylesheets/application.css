@@ -1,0 +1,290 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body{
+ margin:0;
+ background-color: #F5F8F9;          /* ←追加 */
+}
+* {
+ margin: 0 0;
+ padding: 0 0;
+ }
+
+a {
+
+}
+#header {
+	width:100%;
+	height:85px;
+	background-color: #FFF;
+	border-bottom:2px solid #ECF2F3;
+}
+#header h1 {
+	text-align: left;
+	font-size:18px;
+	line-height:4.6em;
+	font-weight: normal;
+	letter-spacing: 2px;
+	text-decoration: none;
+	color:#FF7D7C;
+}
+
+#header h1:before {
+
+	content: "\f0e7";
+  font-family: FontAwesome;
+	color:#FF7D7C;
+	font-size:40px;
+	margin-right:20px;
+}
+
+#header h1 a {
+	text-decoration: none;
+	color:#FF7D7C;
+}
+#header h1 a:hover {
+
+	color:#FF7D7C;
+}
+#header-box {
+	width:1350px;
+	margin:0 auto;
+}
+
+#header-category {
+	width:100%;
+	height:50px;
+	background-color: #FFF;
+	border-bottom:2px solid #ECF2F3;
+}
+#header-category h1 {
+	text-align: center;
+	font-size:18px;
+	line-height:4.6em;
+	font-weight: normal;
+	letter-spacing: 2px;
+	text-decoration: none;
+}
+
+#header-category h1 a {
+	text-decoration: none;
+}
+#header-category h1 a:hover {color:#999;
+}
+#header-box-category {
+	width:1350px;
+	margin:0 auto;
+}
+
+.login-head {
+float: right;
+	width:100px;
+	height:40px;
+	margin-top: 20px;
+	border-radius:10px;
+	border:1px solid #FF7D7C;
+text-align: center;
+line-height: 3em;
+}
+
+.login-head a{
+text-decoration: none;
+}
+
+.login-head a:hover{
+	color:#999;
+}
+
+
+
+.top-profile-image {
+	float:right;
+	width:55px;
+	height:55px;
+	background-color:#EEE;
+	border-radius:50%;
+	margin: 0 auto;
+	overflow:hidden;
+	position: relative;
+	z-index:2;
+	margin-top:15px;
+}
+
+.top-profile-image img {
+
+  width: auto;
+	height:55px;
+display: block;
+position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+     -moz-transform: translate3d(-50%, -50%, 0);
+           -ms-transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+
+#contents-wrap {
+	width:1350px;
+	margin:0 auto;
+	overflow: hidden;
+	margin-top:30px;
+}
+
+#sidebar-left {
+
+	width:310px;
+	float:left;
+	margin-right:15px;
+}
+#sidebar-left ul {
+	margin:0 0;
+}
+
+#login-profile-data {
+	padding-top:20px;
+	background-color: #FFF;
+	height:350px;
+	border:1px solid #ECF2F3;
+	border-radius:3px;
+	margin-bottom:20px;
+}
+
+#recent-like-list {
+
+	background-color: #FFF;
+	height:618px;
+	border:1px solid #ECF2F3;
+	border-radius:3px;
+
+}
+
+
+#recent-like-list h4{
+	padding-left:23px;
+	font-weight: normal;
+	letter-spacing:3px;
+	color:#696969;
+	line-height:3.5em;
+	font-size:14px;
+border-bottom:1px solid #ECF2F3;
+}
+
+#recent-like-list li {
+margin: 0 auto;
+margin-top:20px;
+width:270px;
+height:60px;
+border-bottom:1px solid #ECF2F3;
+}
+
+.recent-like-image {
+	width:60px;
+	height:60px;
+	overflow: hidden;
+	float: left;
+}
+
+.recent-like-image img {
+	width:60px;
+}
+
+.recent-like-price {
+width:100px;
+	float: left;
+
+}
+
+.recent-like-count {
+	padding: 5px 20px 5px 20px ;
+	float: right;
+	background-color: #FF7D7C;
+	border-radius:5px;
+	position: relative;
+	top:-5px;
+	z-index: 2;
+	color: #FFF;
+}
+
+#sidebar-right {
+
+	padding-bottom: 32768px;
+	margin-bottom: -32768px;
+	width:250px;
+	height:100px;
+	background-color: #FFF;
+	border:1px solid #ECF2F3;
+	float:right;
+	margin-left:15px;
+	border-radius:3px;
+}
+
+#profile-wrap {
+	width:750px;
+	margin:0 auto;
+	background-color: #FFF;
+	border:1px solid #ECF2F3;
+}
+
+#user-wrap {
+	padding-top:80px;
+	width:1020px;
+	background-color: #FFF;
+	border:1px solid #ECF2F3;
+}
+
+#user-wrap h3 {
+
+	padding-top:40px;
+	margin-left:50px;
+	color:#6e6e6e;
+}
+#new-present-wrap {
+	width:750px;
+	margin:0 auto;
+}
+
+
+#mypage-following-contents-li {
+
+	width:300px;
+	height:200px;
+	margin-bottom: 20px;
+	margin-left: 15px;
+	float:left;
+	border-top:1px solid #ECF2F3;
+	border-bottom:2px solid #FF7D7C;
+	border-left:1px solid #ECF2F3;
+	border-right:1px solid #ECF2F3;
+}
+
+
+
+#mypage-follower-contents-li {
+
+	width:300px;
+	height:200px;
+	margin-bottom: 20px;
+	margin-left: 15px;
+	float:left;
+	border-top:1px solid #ECF2F3;
+	border-bottom:2px solid #FF7D7C;
+	border-left:1px solid #ECF2F3;
+	border-right:1px solid #ECF2F3;
+}

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Getimage</th>
+      <th>Body</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gets.each do |get| %>
+      <tr>
+        <td><%= get.title %></td>
+        <td><%= get.getimage %></td>
+        <td><%= get.body %></td>
+        <td><%= get.price %></td>
+        <td><%= link_to 'Show', get %></td>
+        <td><%= link_to 'Edit', edit_get_path(get) %></td>
+        <td><%= link_to 'Destroy', get, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Get', new_get_path %>

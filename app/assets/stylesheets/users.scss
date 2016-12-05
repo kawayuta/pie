@@ -1,0 +1,393 @@
+
+.user-profile-image {
+	width:160px;
+	height:160px;
+	background-color:#FFF;
+	border-radius:8%;
+}
+
+#profile-edit-wrap {
+	width:740px;
+	margin:0 auto;
+	background-color: #FFF;
+	border:2px solid #ECF2F3;
+}
+#profile-edit-box {
+	width:680px;
+	margin:0 auto;
+}
+
+#profile-edit-box h3 {
+	
+margin-top:30px;
+margin-bottom:20px;
+}
+
+#profile-setting-field-wrap{
+	
+	height:160px;
+
+}
+
+#category-setting-field-wrap{
+	
+	height:320px;
+
+}
+
+#profile-edit-box .profile-setting-field {
+	width:320px;
+	height:60px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-bottom: 15px;
+	float:left;
+}
+
+#profile-edit-box .profile-setting-field input{
+	width:290px;
+	height:35px;
+	margin-top:5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	float:left;
+	border-radius: 3px;
+	border: 1px solid #EEE;
+}
+
+.category-setting-field {
+	width:150px;
+	margin-left:10px;
+	margin-right:10px;
+	float:left;
+}
+
+.category-setting-field label {
+position:relative;
+  width:150px;
+top:33px;
+text-align:center;
+}
+
+.category-setting-field input[type="checkbox"]{
+  -webkit-appearance: none;
+  width:150px;
+  height:45px;
+  border:2px solid #DDD;
+  border-radius:3px;
+  background:transparent;
+  opacity:0.5;
+  margin-right:20px;
+}
+.category-setting-field input[type="checkbox"]:checked{
+  background:#FF7D7C;
+  opacity:1;
+  border:none;
+  -webkit-transition: all .2s linear;
+}
+
+
+#user-follow-button {
+	
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+
+}
+#user-follow-button:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+#user-follow-button a:before{
+	content: "Following";
+}
+
+
+#user-follow-button a:hover:before{
+	content: "Unfollow";
+	color:#999;
+}
+
+#user-follow-button a {
+	text-align:center;
+	line-height:3em;
+	color:#FFF;
+	text-decoration:none;
+	width:100%;
+	height:45px;
+	display:block;
+}
+
+#user-unfollow-button {
+	
+	width:150px;
+	height:40px;
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#999;
+	margin: 0 auto;
+	margin-top:20px;
+}
+
+#user-unfollow-button:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+
+}
+#user-unfollow-button a:before{
+	content: "Follow";
+}
+#user-unfollow-button a:hover:before{
+	content: "Follow";
+	color:#FFF;
+
+}
+#user-unfollow-button a {
+
+	text-align:center;
+	line-height:3em;
+	color:#999;
+	text-decoration:none;
+	width:100%;
+	height:45px;
+	display:block;
+}
+
+#mypost {
+	
+	padding-top:20px;
+	background-color: #FFF;
+	border-radius:3px;
+	margin-bottom:20px;
+}
+
+#mypost div {
+	height:100px;
+	list-style:none;
+	margin-bottom:10px;
+}
+#mypost div .mypost-image{
+	width:70px;
+	height:70px;
+	overflow:hidden;
+	float:left;
+}
+
+#mypost div .mypost-image img {
+	width:70px;
+	height:auto;
+}
+
+#mypost div .mypost-brand{
+	width:70px;
+	float:left;
+}
+
+
+#mypost div .mypost-price{
+	width:70px;
+	float:left;
+}
+
+
+#mypost div .mypost-youage{
+	width:70px;
+	float:left;
+}
+
+#user-action-data {
+	width:310px;
+}
+
+#user-action-data li{
+	width:155px;
+	float:left;
+	padding-bottom:10px;
+	border-bottom:1px solid #EEE;
+}
+
+#user-action-data li div{
+	width:155px;
+	margin-bottom:5px;
+	font-size:15px;
+}
+
+#user-action-data .user-action-data-follow:after {
+content:"FOLLOWING";
+font-size:11px;
+color:#AAA;
+}
+
+#user-action-data .user-action-data-follower:after {
+content: "FOLLOWER";
+font-size:11px;
+color:#AAA;
+}
+
+#following_user-list {
+}
+#following_user-list li {
+	
+	width:445px;
+	height:100px;
+	list-style:none;
+	border-bottom:1px solid #EEE;
+	float:left;
+	margin-left:15px;
+	margin-right:15px;
+	margin-bottom:15px;
+	padding-bottom:15px;
+}
+
+
+.mypage-following-avatar {
+	
+	width:100px;
+	height:100px;
+	overflow:hidden;
+	position:relative;
+	margin:0 auto;
+	margin-top:-50px;
+	z-index:2;
+	border-radius:50%;
+	border:1px solid #FF7D7C;
+}
+
+.mypage-following-avatar img {
+	
+  width: auto;
+	height:100%;
+display: block;
+position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+     -moz-transform: translate3d(-50%, -50%, 0);
+           -ms-transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+.mypage-following-username {
+position:relative;
+top:-30px;
+	text-align:center;
+
+}
+
+
+.mypage-user_follow_count {
+	
+	width:300px;
+	height:50px;
+	margin: 0 auto;
+}
+
+
+.mypage-followees_count {
+	width:100px;
+	float:left;
+}
+.mypage-followers_count {
+	width:100px;
+	float:right;
+}
+
+.mypage-friends_count {
+	width:100px;
+	float:left;
+}
+.mypage-friends_count div {
+	width:80px;
+	height:20px;
+	text-align:center;
+	font-size:16px;
+}
+.mypage-friends_count:after {
+	content:"FRIENDS";
+font-size:11px;
+color:#AAA;
+margin-left:17px;
+text-align:center;
+
+}
+
+.mypage-followees_count div {
+	width:100px;
+	height:20px;
+	text-align:center;
+	font-size:16px;
+}
+.mypage-followees_count:after {
+	content:"FOLLOWING";
+font-size:11px;
+color:#AAA;
+margin-left:17px;
+text-align:center;
+
+}
+.mypage-followers_count div {
+	width:100px;
+	height:20px;
+	text-align:center;
+	font-size:16px;
+}
+.mypage-followers_count:after {
+	
+content: "FOLLOWER";
+font-size:11px;
+color:#AAA;
+margin-left:20px;
+}
+
+#mypage-user-scoreboard {
+	
+	width:1020px;
+	height:270px;
+	background-color:#FFF;
+
+	border-left: 1px solid #ECF2F3;
+	border-right: 1px solid #ECF2F3;
+	border-top: 1px solid #ECF2F3;
+
+}
+
+#mypage-tab-nav {
+	
+	width:1020px;
+	height:80px;
+	background-color:#FFF;
+	border-left: 1px solid #ECF2F3;
+	border-right: 1px solid #ECF2F3;
+	border-top: 1px solid #ECF2F3;
+}
+
+#mypage-tab-nav li {
+	
+	list-style:none;
+	float:left;
+
+	margin-left:10px;
+	margin-right:10px;
+	width:130px;
+	height:40px;
+	border-radius:30px;
+	border: 1px solid #eee;
+	text-align:center;
+	line-height:3em;
+	position:relative;
+	top:-15px;
+	font-size:13px;
+}

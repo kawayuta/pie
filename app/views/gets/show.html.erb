@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @get.title %>
+</p>
+
+<p>
+  <strong>Getimage:</strong>
+  <%= @get.getimage %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @get.body %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @get.price %>
+</p>
+
+<%= link_to 'Edit', edit_get_path(@get) %> |
+<%= link_to 'Back', gets_path %>

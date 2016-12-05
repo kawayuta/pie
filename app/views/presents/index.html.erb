@@ -1,0 +1,1155 @@
+
+<script>
+    $(function() {
+        $('.tab li').click(function() {
+            var index = $('.tab li').index(this);
+            $('.recent_cat li').css('display', 'none');
+            $('.recent_cat li').eq(index).css('display', 'block');
+            $('.tab li').removeClass('select');
+            $(this).addClass('select')
+        });
+    });
+
+    $(function() {
+        $('.tab-2 li').click(function() {
+            var index = $('.tab-2 li').index(this);
+            $('.pop_cat li').css('display', 'none');
+            $('.pop_cat li').eq(index).css('display', 'block');
+            $('.tab-2 li').removeClass('select');
+            $(this).addClass('select')
+        });
+    });
+
+    $(function() {
+        $('.contents-head-sort-button div').click(function() {
+            var index2 = $('.contents-head-sort-button div').index(this);
+            $('.content li .sort-li').css('display', 'none');
+            $('.content li .sort-li').eq(index2).css('display', 'block');
+            $('.contents-head-sort-button div').removeClass('sort-select');
+            $(this).addClass('sort-select')
+        });
+    });
+
+</script>
+
+<div id="header">
+  <div id="header-box">
+    <% if @result %>
+         <div class="top-profile-image">
+            <%= link_to image_tag(current_user.avatar.url), user_registration_path %>
+         </div>
+    <% elsif %>
+    <div class="login-head"><%= link_to "Login", new_user_session_path%></div>
+    <% end %>
+    <h1><%= link_to "Prres", root_path %></h1>
+  </div>
+</div>
+
+<div id="contents-wrap" class="clearfix">
+    <div id="sidebar-left">
+
+    <% if @result %>
+<% @birthday_friend_data =[] %>
+<% @following.each do |test| %>
+<% if test.follows?(current_user) && test.birthday.strftime("%Y%m%d").to_i == @datatime.to_i %>  
+<% @birthday_friend_data[test.id] = test %>
+<% end %>
+<% end %>
+
+      <% @birthday_friend_data.compact.first(1).each do |birthday| %>
+      <% if birthday.follows?(current_user) && birthday.birthday.strftime("%Y%m%d").to_i == @datatime.to_i %>  
+      <div class="birthday_true clearfix">
+      <div class="today_birthday"><h3>Today's Birthday Friends</h3></div>
+      <div class="birthday_user_data_wrap-boxing">
+      <% end %>
+      <% end %>
+
+      <% @birthday_friend_data.compact.each do |birthday| %>
+      <div class="birthday_user_data_wrap">
+      <div class="birthday_user_data"><%= link_to image_tag(birthday.avatar.url), birthday %></div>
+      <div class="birthday_user_data_name"><%= birthday.username %></div>
+      </div>
+      <% end %>
+
+      <% @birthday_friend_data.compact.first(1).each do |birthday| %>
+      <% if birthday.follows?(current_user) && birthday.birthday.strftime("%Y%m%d").to_i == @datatime.to_i %> 
+      </div>
+      </div>
+      <% end %>
+      <% end %>
+
+
+      <% end %>
+
+<% @aaaaaaaa.zip(@bbbbbbbb).each do |aaa, bbb| %>
+
+    <% if @datatime_md == aaa %>
+      <div class="today_is_event">
+      <h3><%= bbb %></h3>   
+      </div>
+    <% else %>
+
+    <% end %>
+
+<% end %>
+
+
+        <div id="recent-like-list">
+            <h4>POPULAR</h4>
+            <p>box説明が必要ではborderの上かココ</p>
+            <ul>
+                <% Present.order(:cached_votes_up => :desc).first(6).each do |like_new_data| %>
+                    <li>
+                      <div class="recent-like-image">
+                            <%= link_to image_tag(like_new_data.image), like_new_data %>
+                        </div>
+                        <div class="recent-like-price">
+                            <%= like_new_data.price %> 円</div>
+                        <div class="recent-like-count">
+                            <%= like_new_data.get_likes.size %>
+                        </div>
+                    </li>
+                    <% end %>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main-contents-wrap" class="clearfix">
+        <div id="presents-cat">
+
+            <!-- ログインしている時 -->
+
+            <% if @result %>
+        </div>
+        <div id="presents-tab-contents">
+            <ul class="content">
+
+                  
+                  <li class="show">
+                    <div class="contents-head">
+
+                     <div class="contents-head-writing">
+                          <%= link_to new_present_url do %>
+                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                              <% end %>
+                      </div>
+
+                      <div class="contents-head-sort-button">
+                          <div class="sort-button-timeline sort-select">TIMELINE</div>
+                          <div class="sort-button-recent">RECENT</div>
+                          <div class="sort-button-popular">POPULAR</div>
+                      </div>
+                      <div class="contents-head-setting">
+                          <%= link_to edit_user_registration_path do %>
+                              <i class="fa fa-cog fa-2x"></i>
+                              <% end %>
+                      </div>
+                    </div>
+
+
+                    <div class="sort-li show">
+
+
+<div class="timeline-left-position">
+
+      <ul>
+<% @following_posts_get.each do |get| %>
+<li>
+<div id="get-poster-profile">
+        <div class="get-post-user-avatar"><%= link_to image_tag(User.find(get.created_by).avatar.url), User.find(get.created_by) %></div>
+        <div class="get-post-user-username"><%= User.find(get.created_by).username %></div>
+        <div class="get-post-user-time"><%= get.created_at.strftime("%Y年%m月%d日") %></div>
+</div>
+        <div class="get-post-user-title"><span><%= get.title %></span></div>
+        <div class="get-post-user-body"><%= get.body %></div>
+        <div class="clearfix">
+        <div class="get-getimage"><%= link_to image_tag(get.getimage.url), get %></div>
+        <div class="get-price"><span><%= get.price %> 円</span></div>
+        </div>
+        
+    <% end %>
+      </ul>
+</div>
+
+<div class="timeline-right-position">
+
+<div id="post-enquete">
+  <div id="post-enquete-button">アンケートの作成</div>
+</div>
+
+                        <% @following_posts.each do|data| %>
+                          <div class="content-timeline-li">
+                          <div id="post-data-timeline">
+                            <div id="poster-profile">
+                              <div class="poster-profile-image"><%= link_to image_tag(User.find(data.created_by).avatar.url) %></div>
+                              <div class="poster-profile-name"><%= User.find(data.created_by).username%></div>
+                            </div>
+                            <div class="clearfix">
+                                 <div class="post-tl-image"><%= link_to image_tag(data.image), data %></div>
+                                 <div class="post-tl-title">
+                                  <%= truncate(data.title, length: 30) %>
+                                 </div>
+                                <span class="post-tl-price"><%= data.price %> 円</span>
+
+                                  <span class="post-tl-youage">
+                              <% dataage =  @datatime.to_i - User.find(data.created_by).birthday.strftime("%Y%m%d").to_i %>
+                              <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= data.youage %>歳
+                              </span>
+
+                                <span class="post-tl-about">
+                                <%= link_to data do %>
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                                <% end %>
+                                </span>
+
+                            </div>
+                            <div class="likedislike-timeline">
+                                  <% if current_user.voted_up_on? data %>
+                                      <div class="likedislike-like-timeline">
+                                          <%= link_to like_present_path(data), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                               <!--   <div class="like-count-timeline">
+                                                      <%= data.get_likes.size%>
+                                                  </div> -->
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-timeline">
+                                              <%= link_to like_present_path(data), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                                     <!--    <div class="nolike-count-timeline">
+                                                          <%= data.get_likes.size%>
+                                                      </div> -->
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? data %>
+                                                  <div class="likedislike-dislike-timeline">
+                                                      
+                                                      <%= link_to dislike_present_path(data), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+
+                                                          <% end %>
+                                                          <!--    <div class="dislike-count-timeline">
+                                                          <%= data.get_dislikes.size %>
+                                                      </div> -->
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-timeline">
+                                                          
+                                                          <%= link_to dislike_present_path(data), method: :put do %>
+                                                              <i class="fa fa-heart fa-2x"></i>
+                                                              <% end %>
+                                                              <!--    <div class="nodislike-count-timeline">
+                                                              <%= data.get_dislikes.size %>
+                                                          </div> -->
+                                                      </div>
+                                                      <% end %>
+                              </div>
+
+                            </div>
+                          </div>
+                        <% end %>
+</div>
+                    </div>
+                    <div class="sort-li hide">
+                      <% if @result %>
+                        <div id="presents-tab">
+                                            <ul class="tab">
+                                                <li class="new-tab select alljungle-tab">オールジャンル</li>
+                                                <% if @userid.cat_baby_switch == true %>
+                                                    <li class="default-tab baby-tab">ベビー</li>
+                                                    <% elsif @userid.cat_baby_switch == false %>
+                                                        <% end %>
+                                                            <% if @userid.cat_prescool_switch == true %>
+                                                                <li class="default-tab pre-school-pre">キッズ</li>
+                                                                <% elsif @userid.cat_prescool_switch == false %>
+                                                                    <% end %>
+                                                                        <% if @userid.cat_juniorscool_switch == true %>
+                                                                            <li class="default-tab junior-school-pre">ジュニア</li>
+                                                                            <% elsif @userid.cat_juniorscool_switch == false %>
+                                                                                <% end %>
+                                                                                    <% if @userid.cat_highscool_switch == true %>
+                                                                                        <li class="default-tab high-school-pre">中学生・高校生</li>
+                                                                                        <% elsif @userid.cat_highscool_switch == false %>
+                                                                                            <% end %>
+                                                                                                <% if @userid.cat_universityscool_switch == true %>
+                                                                                                    <li class="default-tab university-school-pre">大学生・新社会人</li>
+                                                                                                    <% elsif @userid.cat_universityscool_switch == false %>
+                                                                                                        <% end %>
+                                            </ul>
+                        </div>
+                      <% elsif %>
+                                        <div id="presents-tab">
+                                            <ul class="tab">
+                                                <li class="new-tab select">最新</li>
+                                                <li class="default-tab baby-tab">ベビー</li>
+                                                <li class="default-tab pre-school-pre">キッズ</li>
+                                                <li class="default-tab junior-school-pre">ジュニア</li>
+                                                <li class="default-tab high-school-pre">中学生・高校生</li>
+                                                <li class="default-tab university-school-pre">大学生・新社会人</li>
+                                            </ul>
+                                        </div>
+                      <% end %>
+
+                                <ul class="recent_cat">
+                                <li class="show">
+                                  <% @presents.reverse_each do |present| %>
+                                      <div class="contents-li">
+                                          <div class="image-box">
+                                              <div class="image">
+                                                  <%= link_to image_tag(present.image), present %>
+                                              </div>
+                                              <span class="present-about"><%= link_to '商品情報', present %></span>
+                                          </div>
+
+                                          <span class="title"><%= present.title %></span>
+                                          <span class="price"><%= present.price %> 円</span>
+                                          <span class="youage">
+                                         <%= present.age  %>歳
+                                          </span>
+
+                                          <div class="likedislike">
+                                              <% if current_user.voted_up_on? present %>
+                                                  <div class="likedislike-like">
+                                                      <%= link_to like_present_path(present), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                          <% end %>
+                                                              <div class="like-count">
+                                                                  <%= present.get_likes.size%>
+                                                              </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nolike">
+                                                          <%= link_to like_present_path(present), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                              <% end %>
+                                                                  <div class="nolike-count">
+                                                                      <%= present.get_likes.size%>
+                                                                  </div>
+                                                      </div>
+                                                      <% end %>
+                                                          <% if current_user.voted_down_on? present %>
+                                                              <div class="likedislike-dislike">
+                                                                  
+                                                                  <%= link_to dislike_present_path(present), method: :put do %>
+                                                                      <i class="fa fa-heart fa-2x"></i>
+                                                                      <% end %>
+                                                                      <div class="dislike-count">
+                                                                      <%= present.get_dislikes.size %>
+                                                                  </div>
+                                                              </div>
+                                                              <% elsif %>
+                                                                  <div class="likedislike-nodislike">
+                                                                  <%= link_to dislike_present_path(present), method: :put do %>
+                                                                          <i class="fa fa-heart fa-2x"></i>
+                                                                          <% end %>
+                                                                      <div class="nodislike-count">
+                                                                          <%= present.get_dislikes.size %>
+                                                                      </div>
+                                                                      
+                                                                  </div>
+                                                                  <% end %>
+                                          </div>
+                                      </div>
+                                      <% end %>
+                                      </li>
+                                      <li class="hide">
+                                                              <% @posts_age_0_3.reverse_each do |age03| %>
+                                      <div class="contents-li">
+                                          <div class="image-box">
+                                              <div class="image">
+                                                  <%= link_to image_tag(age03.image), age03 %>
+                                              </div>
+                                              <span class="present-about"><%= link_to '商品情報', age03 %></span>
+                                          </div>
+                                          <span class="title"><%= age03.title %></span>
+                                          <span class="price"><%= age03.price %> 円</span>
+                                          <span class="youage">
+                                          <%= age03.age  %>歳
+                                          </span>
+                                          <div class="likedislike">
+                                              <% if current_user.voted_up_on? age03 %>
+                                                  <div class="likedislike-like">
+                                                      <%= link_to like_present_path(age03), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                          <% end %>
+                                                              <div class="like-count">
+                                                                  <%= age03.get_likes.size%>
+                                                              </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nolike">
+                                                          <%= link_to like_present_path(age03), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                              <% end %>
+                                                                  <div class="nolike-count">
+                                                                      <%= age03.get_likes.size%>
+                                                                  </div>
+                                                      </div>
+                                                      <% end %>
+                                                          <% if current_user.voted_down_on? age03 %>
+                                                              <div class="likedislike-dislike">
+                                                                  <%= link_to dislike_present_path(age03), method: :put do %>
+                                                                      <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                      <% end %>
+                                                                  <div class="dislike-count">
+                                                                      <%= age03.get_dislikes.size %>
+                                                                  </div>
+                                                              </div>
+                                                              <% elsif %>
+                                                                  <div class="likedislike-nodislike">
+                                                                      <%= link_to dislike_present_path(age03), method: :put do %>
+                                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                          <% end %>
+                                                                      <div class="nodislike-count">
+                                                                          <%= age03.get_dislikes.size %>
+                                                                      </div>
+                                                                  </div>
+                                                                  <% end %>
+                                          </div>
+                                      </div>
+                                      <% end %>
+                                      </li>
+                                      <li class="hide">
+                                        <% @posts_age_3_6.reverse_each do |age06| %>
+                                      <div class="contents-li">
+                                          <div class="image-box">
+                                              <div class="image">
+                                                  <%= link_to image_tag(age06.image), age06 %>
+                                              </div>
+                                              <span class="present-about"><%= link_to '商品情報', age06 %></span>
+                                          </div>
+                                          <span class="title"><%= age06.title %></span>
+                                          <span class="price"><%= age06.price %> 円</span>
+                                          <span class="youage">
+                                          <% dataage =  @datatime.to_i - User.find(age06.created_by).birthday.strftime("%Y%m%d").to_i %>
+                                          <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age06.youage %>歳
+                                          </span>
+                                          <div class="likedislike">
+                                              <% if current_user.voted_up_on? age06 %>
+                                                  <div class="likedislike-like">
+                                                      <%= link_to like_present_path(age06), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                          <% end %>
+                                                              <div class="like-count">
+                                                                  <%= age06.get_likes.size%>
+                                                              </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nolike">
+                                                          <%= link_to like_present_path(age06), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                              <% end %>
+                                                                  <div class="nolike-count">
+                                                                      <%= age06.get_likes.size%>
+                                                                  </div>
+                                                      </div>
+                                                      <% end %>
+                                                          <% if current_user.voted_down_on? age06 %>
+                                                              <div class="likedislike-dislike">
+                                                                  <%= link_to dislike_present_path(age06), method: :put do %>
+                                                                      <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                      <% end %>
+                                                                  <div class="dislike-count">
+                                                                      <%= age06.get_dislikes.size %>
+                                                                  </div>
+                                                              </div>
+                                                              <% elsif %>
+                                                                  <div class="likedislike-nodislike">
+                                                                      <%= link_to dislike_present_path(age06), method: :put do %>
+                                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                          <% end %>
+                                                                      <div class="nodislike-count">
+                                                                          <%= age06.get_dislikes.size %>
+                                                                      </div>
+                                                                  </div>
+                                                                  <% end %>
+                                          </div>
+                                      </div>
+                                      <% end %>
+                                      </li>
+                                      <li class="hide">
+
+                                  <% @posts_age_6_12.reverse_each do |age12| %>
+                                      <div class="contents-li">
+                                          <div class="image-box">
+                                              <div class="image">
+                                                  <%= link_to image_tag(age12.image), age12 %>
+                                              </div>
+                                              <span class="present-about"><%= link_to '商品情報', age12 %></span>
+                                          </div>
+                                          <span class="title"><%= age12.title %></span>
+                                          <span class="price"><%= age12.price %> 円</span>
+                                          <span class="youage">
+                                          <% dataage =  @datatime.to_i - User.find(age12.created_by).birthday.strftime("%Y%m%d").to_i %>
+                                          <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age12.youage %>歳
+                                          </span>
+                                          <div class="likedislike">
+                                              <% if current_user.voted_up_on? age12 %>
+                                                  <div class="likedislike-like">
+                                                      <%= link_to like_present_path(age12), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                          <% end %>
+                                                              <div class="like-count">
+                                                                  <%= age12.get_likes.size%>
+                                                              </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nolike">
+                                                          <%= link_to like_present_path(age12), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                              <% end %>
+                                                                  <div class="nolike-count">
+                                                                      <%= age12.get_likes.size%>
+                                                                  </div>
+                                                      </div>
+                                                      <% end %>
+                                                          <% if current_user.voted_down_on? age12 %>
+                                                              <div class="likedislike-dislike">
+                                                                  <%= link_to dislike_present_path(age12), method: :put do %>
+                                                                      <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                      <% end %>
+                                                                  <div class="dislike-count">
+                                                                      <%= age12.get_dislikes.size %>
+                                                                  </div>
+                                                              </div>
+                                                              <% elsif %>
+                                                                  <div class="likedislike-nodislike">
+                                                                      <%= link_to dislike_present_path(age12), method: :put do %>
+                                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                          <% end %>
+                                                                      <div class="nodislike-count">
+                                                                          <%= age12.get_dislikes.size %>
+                                                                      </div>
+                                                                  </div>
+                                                                  <% end %>
+                                          </div>
+                                      </div>
+                                      <% end %>
+                                      </li>
+                                      <li class="hide">
+                                        
+                                  <% @posts_age_12_18.reverse_each do |age18| %>
+                                      <div class="contents-li">
+                                          <div class="image-box">
+                                              <div class="image">
+                                                  <%= link_to image_tag(age18.image), age18 %>
+                                              </div>
+                                              <span class="present-about"><%= link_to '商品情報', age18 %></span>
+                                          </div>
+                                          <span class="title"><%= age18.title %></span>
+                                          <span class="price"><%= age18.price %> 円</span>
+                                          <span class="youage">
+                                          <% dataage =  @datatime.to_i - User.find(age18.created_by).birthday.strftime("%Y%m%d").to_i %>
+                                          <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age18.youage %>歳
+                                          </span>
+                                          <div class="likedislike">
+                                              <% if current_user.voted_up_on? age18 %>
+                                                  <div class="likedislike-like">
+                                                      <%= link_to like_present_path(age18), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                          <% end %>
+                                                              <div class="like-count">
+                                                                  <%= age18.get_likes.size%>
+                                                              </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nolike">
+                                                          <%= link_to like_present_path(age18), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                              <% end %>
+                                                                  <div class="nolike-count">
+                                                                      <%= age18.get_likes.size%>
+                                                                  </div>
+                                                      </div>
+                                                      <% end %>
+                                                          <% if current_user.voted_down_on? age18 %>
+                                                              <div class="likedislike-dislike">
+                                                                  <%= link_to dislike_present_path(age18), method: :put do %>
+                                                                      <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                      <% end %>
+                                                                  <div class="dislike-count">
+                                                                      <%= age18.get_dislikes.size %>
+                                                                  </div>
+                                                              </div>
+                                                              <% elsif %>
+                                                                  <div class="likedislike-nodislike">
+                                                                      <%= link_to dislike_present_path(age18), method: :put do %>
+                                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                          <% end %>
+                                                                      <div class="nodislike-count">
+                                                                          <%= age18.get_dislikes.size %>
+                                                                      </div>
+                                                                  </div>
+                                                                  <% end %>
+                                          </div>
+                                      </div>
+                                      <% end %>
+                                      </li>
+
+                                      <li class="hide">
+                                        
+                                  <% @posts_age_18_21.reverse_each do |age21| %>
+                                      <div class="contents-li">
+                                          <div class="image-box">
+                                              <div class="image">
+                                                  <%= link_to image_tag(age21.image), age21 %>
+                                              </div>
+                                              <span class="present-about"><%= link_to '商品情報', age21 %></span>
+                                          </div>
+                                          <span class="title"><%= age21.title %></span>
+                                          <span class="price"><%= age21.price %> 円</span>
+                                          <span class="youage">
+                                          <% dataage =  @datatime.to_i - User.find(age21.created_by).birthday.strftime("%Y%m%d").to_i %>
+                                          <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age21.youage %>歳
+                                          </span>
+                                          <div class="likedislike">
+                                              <% if current_user.voted_up_on? age21 %>
+                                                  <div class="likedislike-like">
+                                                      <%= link_to like_present_path(age21), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                          <% end %>
+                                                              <div class="like-count">
+                                                                  <%= age21.get_likes.size%>
+                                                              </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nolike">
+                                                          <%= link_to like_present_path(age21), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                              <% end %>
+                                                                  <div class="nolike-count">
+                                                                      <%= age21.get_likes.size%>
+                                                                  </div>
+                                                      </div>
+                                                      <% end %>
+                                                          <% if current_user.voted_down_on? age21 %>
+                                                              <div class="likedislike-dislike">
+                                                                  <%= link_to dislike_present_path(age21), method: :put do %>
+                                                                      <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                      <% end %>
+                                                                  <div class="dislike-count">
+                                                                      <%= age21.get_dislikes.size %>
+                                                                  </div>
+                                                              </div>
+                                                              <% elsif %>
+                                                                  <div class="likedislike-nodislike">
+                                                                      <%= link_to dislike_present_path(age21), method: :put do %>
+                                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                                          <% end %>
+                                                                      <div class="nodislike-count">
+                                                                          <%= age21.get_dislikes.size %>
+                                                                      </div>
+                                                                  </div>
+                                                                  <% end %>
+                                          </div>
+                                      </div>
+                                      <% end %>
+                                      </li>
+
+                                      </ul>
+                                </div>
+                    <div class="sort-li hide">
+                                         <% if @result %>
+                        <div id="presents-tab">
+                <ul class="tab-2">
+                    <li class="new-tab select">オールジャンル</li>
+                    <% if @userid.cat_baby_switch == true %>
+                        <li class="default-tab baby-tab">ベビー</li>
+                        <% elsif @userid.cat_baby_switch == false %>
+                            <% end %>
+                                <% if @userid.cat_prescool_switch == true %>
+                                    <li class="default-tab pre-school-pre">キッズ</li>
+                                    <% elsif @userid.cat_prescool_switch == false %>
+                                        <% end %>
+                                            <% if @userid.cat_juniorscool_switch == true %>
+                                                <li class="default-tab junior-school-pre">ジュニア</li>
+                                                <% elsif @userid.cat_juniorscool_switch == false %>
+                                                    <% end %>
+                                                        <% if @userid.cat_highscool_switch == true %>
+                                                            <li class="default-tab high-school-pre">中学生・高校生</li>
+                                                            <% elsif @userid.cat_highscool_switch == false %>
+                                                                <% end %>
+                                                                    <% if @userid.cat_universityscool_switch == true %>
+                                                                        <li class="default-tab university-school-pre">大学生・新社会人</li>
+                                                                        <% elsif @userid.cat_universityscool_switch == false %>
+                                                                            <% end %>
+                </ul>
+                        </div>
+                        <% elsif %>
+                            <div id="presents-tab">
+                                <ul class="tab-2">
+                                    <li class="new-tab select">最新</li>
+                                    <li class="default-tab baby-tab">ベビー</li>
+                                    <li class="default-tab pre-school-pre">保育園児・幼稚園児</li>
+                                    <li class="default-tab junior-school-pre">小学生</li>
+                                    <li class="default-tab high-school-pre">中学生・高校生</li>
+                                    <li class="default-tab university-school-pre">大学生・新社会人</li>
+                                </ul>
+                            </div>
+                            <% end %>
+                    <ul class="pop_cat">
+                    <li class="show">
+                      <% Present.order(:cached_votes_up => :desc).first(6).each do |present| %>
+                          <div class="contents-li">
+                              <div class="image-box">
+                                  <div class="image">
+                                      <%= link_to image_tag(present.image), present %>
+                                  </div>
+                                  <span class="present-about"><%= link_to '商品情報', present %></span>
+                              </div>
+                              <span class="title"><%= present.title %></span>
+                              <span class="price"><%= present.price %> 円</span>
+                              <span class="youage">
+                              <% dataage =  @datatime.to_i - User.find(present.created_by).birthday.strftime("%Y%m%d").to_i %>
+                              <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= present.youage %>歳
+                              </span>
+                              <div class="likedislike">
+                                  <% if current_user.voted_up_on? present %>
+                                      <div class="likedislike-like">
+                                          <%= link_to like_present_path(present), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                                  <div class="like-count">
+                                                      <%= present.get_likes.size%>
+                                                  </div>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike">
+                                              <%= link_to like_present_path(present), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                                      <div class="nolike-count">
+                                                          <%= present.get_likes.size%>
+                                                      </div>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? present %>
+                                                  <div class="likedislike-dislike">
+                                                  <%= link_to dislike_present_path(present), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+                                                          <% end %>
+                                                      <div class="dislike-count">
+                                                          <%= present.get_dislikes.size %>
+                                                      </div>
+                                                      
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike">
+                                                      <%= link_to dislike_present_path(present), method: :put do %>
+                                                              <i class="fa fa-heart fa-2x"></i>
+                                                              <% end %>
+                                                          <div class="nodislike-count">
+                                                              <%= present.get_dislikes.size %>
+                                                          </div>
+                                                          
+                                                      </div>
+                                                      <% end %>
+                              </div>
+                          </div>
+                        <% end %></li>
+                    <li class="hide">
+                      <% @posts_age_0_3.order(:cached_votes_up => :desc).first(6).each do |age03| %>
+                          <div class="contents-li">
+                              <div class="image-box">
+                                  <div class="image">
+                                      <%= link_to image_tag(age03.image), age03 %>
+                                  </div>
+                                  <span class="present-about"><%= link_to '商品情報', age03 %></span>
+                              </div>
+                              <span class="title"><%= age03.title %></span>
+                              <span class="price"><%= age03.price %> 円</span>
+                              <span class="youage">
+                              <% dataage =  @datatime.to_i - User.find(age03.created_by).birthday.strftime("%Y%m%d").to_i %>
+                              <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age03.youage %>歳
+                              </span>
+                              <div class="likedislike">
+                                  <% if current_user.voted_up_on? age03 %>
+                                      <div class="likedislike-like">
+                                          <%= link_to like_present_path(age03), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                                  <div class="like-count">
+                                                      <%= age03.get_likes.size%>
+                                                  </div>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike">
+                                              <%= link_to like_present_path(age03), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                                      <div class="nolike-count">
+                                                          <%= age03.get_likes.size%>
+                                                      </div>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? age03 %>
+                                                  <div class="likedislike-dislike">
+                                                      <%= link_to dislike_present_path(age03), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                          <% end %>
+                                                      <div class="dislike-count">
+                                                          <%= age03.get_dislikes.size %>
+                                                      </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike">
+                                                          <%= link_to dislike_present_path(age03), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                              <% end %>
+                                                          <div class="nodislike-count">
+                                                              <%= age03.get_dislikes.size %>
+                                                          </div>
+                                                      </div>
+                                                      <% end %>
+                              </div>
+                          </div>
+                          <% end %></li>
+                    <li class="hide">
+                      <% @posts_age_3_6.order(:cached_votes_up => :desc).first(6).each do |age06| %>
+                          <div class="contents-li">
+                              <div class="image-box">
+                                  <div class="image">
+                                      <%= link_to image_tag(age06.image), age06 %>
+                                  </div>
+                                  <span class="present-about"><%= link_to '商品情報', age06 %></span>
+                              </div>
+                              <span class="title"><%= age06.title %></span>
+                              <span class="price"><%= age06.price %> 円</span>
+                              <span class="youage">
+                              <% dataage =  @datatime.to_i - User.find(age06.created_by).birthday.strftime("%Y%m%d").to_i %>
+                              <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age06.youage %>歳
+                              </span>
+                              <div class="likedislike">
+                                  <% if current_user.voted_up_on? age06 %>
+                                      <div class="likedislike-like">
+                                          <%= link_to like_present_path(age06), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                                  <div class="like-count">
+                                                      <%= age06.get_likes.size%>
+                                                  </div>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike">
+                                              <%= link_to like_present_path(age06), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                                      <div class="nolike-count">
+                                                          <%= age06.get_likes.size%>
+                                                      </div>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? age06 %>
+                                                  <div class="likedislike-dislike">
+                                                      <%= link_to dislike_present_path(age06), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                          <% end %>
+                                                      <div class="dislike-count">
+                                                          <%= age06.get_dislikes.size %>
+                                                      </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike">
+                                                          <%= link_to dislike_present_path(age06), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                              <% end %>
+                                                          <div class="nodislike-count">
+                                                              <%= age06.get_dislikes.size %>
+                                                          </div>
+                                                      </div>
+                                                      <% end %>
+                              </div>
+                          </div>
+                          <% end %></li>
+                    <li class="hide">
+                            
+                      <% @posts_age_6_12.order(:cached_votes_up => :desc).first(6).each do |age12| %>
+                          <div class="contents-li">
+                              <div class="image-box">
+                                  <div class="image">
+                                      <%= link_to image_tag(age12.image), age12 %>
+                                  </div>
+                                  <span class="present-about"><%= link_to '商品情報', age12 %></span>
+                              </div>
+                              <span class="title"><%= age12.title %></span>
+                              <span class="price"><%= age12.price %> 円</span>
+                              <span class="youage">
+                              <% dataage =  @datatime.to_i - User.find(age12.created_by).birthday.strftime("%Y%m%d").to_i %>
+                              <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age12.youage %>歳
+                              </span>
+                              <div class="likedislike">
+                                  <% if current_user.voted_up_on? age12 %>
+                                      <div class="likedislike-like">
+                                          <%= link_to like_present_path(age12), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                                  <div class="like-count">
+                                                      <%= age12.get_likes.size%>
+                                                  </div>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike">
+                                              <%= link_to like_present_path(age12), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                                      <div class="nolike-count">
+                                                          <%= age12.get_likes.size%>
+                                                      </div>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? age12 %>
+                                                  <div class="likedislike-dislike">
+                                                      <%= link_to dislike_present_path(age12), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                          <% end %>
+                                                      <div class="dislike-count">
+                                                          <%= age12.get_dislikes.size %>
+                                                      </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike">
+                                                          <%= link_to dislike_present_path(age12), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                              <% end %>
+                                                          <div class="nodislike-count">
+                                                              <%= age12.get_dislikes.size %>
+                                                          </div>
+                                                      </div>
+                                                      <% end %>
+                              </div>
+                          </div>
+                          <% end %></li>
+                    <li class="hide">
+                         
+                      <% @posts_age_12_18.order(:cached_votes_up => :desc).first(6).each do |age18| %>
+                          <div class="contents-li">
+                              <div class="image-box">
+                                  <div class="image">
+                                      <%= link_to image_tag(age18.image), age18 %>
+                                  </div>
+                                  <span class="present-about"><%= link_to '商品情報', age18 %></span>
+                              </div>
+                              <span class="title"><%= age18.title %></span>
+                              <span class="price"><%= age18.price %> 円</span>
+                              <span class="youage">
+                              <% dataage =  @datatime.to_i - User.find(age18.created_by).birthday.strftime("%Y%m%d").to_i %>
+                              <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age18.youage %>歳
+                              </span>
+                              <div class="likedislike">
+                                  <% if current_user.voted_up_on? age18 %>
+                                      <div class="likedislike-like">
+                                          <%= link_to like_present_path(age18), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                                  <div class="like-count">
+                                                      <%= age18.get_likes.size%>
+                                                  </div>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike">
+                                              <%= link_to like_present_path(age18), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                                      <div class="nolike-count">
+                                                          <%= age18.get_likes.size%>
+                                                      </div>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? age18 %>
+                                                  <div class="likedislike-dislike">
+                                                      <%= link_to dislike_present_path(age18), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                          <% end %>
+                                                      <div class="dislike-count">
+                                                          <%= age18.get_dislikes.size %>
+                                                      </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike">
+                                                          <%= link_to dislike_present_path(age18), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                              <% end %>
+                                                          <div class="nodislike-count">
+                                                              <%= age18.get_dislikes.size %>
+                                                          </div>
+                                                      </div>
+                                                      <% end %>
+                              </div>
+                          </div>
+                      <% end %>   </li>
+                    <li class="hide">
+                        <% @posts_age_18_21.order(:cached_votes_up => :desc).first(6).each do |age21| %>
+                         <div class="contents-li">
+                              <div class="image-box">
+                                  <div class="image">
+                                      <%= link_to image_tag(age21.image), age21 %>
+                                  </div>
+                                  <span class="present-about"><%= link_to '商品情報', age21 %></span>
+                              </div>
+                              <span class="title"><%= age21.title %></span>
+                              <span class="price"><%= age21.price %> 円</span>
+                              <span class="youage">
+                              <% dataage =  @datatime.to_i - User.find(age21.created_by).birthday.strftime("%Y%m%d").to_i %>
+                              <%= dataage / 10000  %>歳 <i class="fa fa-long-arrow-right"></i> <%= age21.youage %>歳
+                              </span>
+                              <div class="likedislike">
+                                  <% if current_user.voted_up_on? age21 %>
+                                      <div class="likedislike-like">
+                                          <%= link_to like_present_path(age21), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                                  <div class="like-count">
+                                                      <%= age21.get_likes.size%>
+                                                  </div>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike">
+                                              <%= link_to like_present_path(age21), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                                      <div class="nolike-count">
+                                                          <%= age21.get_likes.size%>
+                                                      </div>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? age21 %>
+                                                  <div class="likedislike-dislike">
+                                                      <%= link_to dislike_present_path(age21), method: :put do %>
+                                                          <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                          <% end %>
+                                                      <div class="dislike-count">
+                                                          <%= age21.get_dislikes.size %>
+                                                      </div>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike">
+                                                          <%= link_to dislike_present_path(age21), method: :put do %>
+                                                              <i class="fa fa-thumbs-o-down fa-2x"></i>
+                                                              <% end %>
+                                                          <div class="nodislike-count">
+                                                              <%= age21.get_dislikes.size %>
+                                                          </div>
+                                                      </div>
+                                                      <% end %>
+                              </div>
+                          </div>
+                          <% end %></li>
+                    </ul>
+                    </div>
+                  </li>
+                
+
+            </ul>
+
+            <!-- ログインしていない時 -->
+            <% elsif %>
+        </div>
+        <div id="presents-tab-contents">
+            <ul class="content">
+                <div class="contents-head">
+                    <h2>TIMELINE</h2>
+                    <div class="contents-head-setting">
+                        <%= link_to edit_user_registration_path do %>
+                            <i class="fa fa-cog  fa-2x"></i>
+                            <% end %>
+                    </div>
+                </div>
+                <li>
+                    <% @presents.reverse_each do |present| %>
+                        <div class="contents-li">
+                            <div class="image">
+                                <%= link_to image_tag(present.image), present %>
+                            </div>
+                            <span class="price"><%= present.price %>円</span>
+                            <span class="youage"><%= present.youage %>歳へのプレゼント</span>
+                            <span class="present-about"><%= link_to '詳細はこちら', present %></span>
+                        </div>
+                        <% end %>
+                </li>
+                <li class="hide">
+                    <% @posts_age_0_3.reverse_each do |age03| %>
+                        <div class="contents-li">
+                            <div class="image">
+                                <%= link_to image_tag(age03.image), @present %>
+                            </div>
+                            <span class="price"><%= age03.price %>円</span>
+                            <span class="youage"><%= age03.youage %>歳へのプレゼント</span>
+                            <span class="present-about"><%= link_to '詳細はこちら', @present %></span>
+                        </div>
+                        <% end %>
+                </li>
+                <li class="hide">
+                    <% @posts_age_3_6.reverse_each do |age06| %>
+                        <div class="contents-li">
+                            <div class="image">
+                                <%= link_to image_tag(age06.image), @present %>
+                            </div>
+                            <span class="price"><%= age06.price %>円</span>
+                            <span class="youage"><%= age06.youage %>歳へのプレゼント</span>
+                            <span class="present-about"><%= link_to '詳細はこちら', @present %></span>
+                        </div>
+                        <% end %>
+                </li>
+                <li class="hide">
+                    <% @posts_age_6_12.reverse_each do |age12| %>
+                        <div class="contents-li">
+                            <div class="image">
+                                <%= link_to image_tag(age12.image), @present %>
+                            </div>
+                            <span class="price"><%= age12.price %>円</span>
+                            <span class="youage"><%= age12.youage %>歳へのプレゼント</span>
+                            <span class="present-about"><%= link_to '詳細はこちら', @present %></span>
+                        </div>
+                        <% end %>
+                </li>
+                <li class="hide">
+                    <% @posts_age_12_18.reverse_each do |age18| %>
+                        <div class="contents-li">
+                            <div class="image">
+                                <%= link_to image_tag(age18.image), @present %>
+                            </div>
+                            <span class="price"><%= age18.price %>円</span>
+                            <span class="youage"><%= age18.youage %>歳へのプレゼント</span>
+                            <span class="present-about"><%= link_to '詳細はこちら', @present %></span>
+                        </div>
+                        <% end %>
+                </li>
+                <li class="hide">
+                    <% @posts_age_18_21.reverse_each do |age21| %>
+                        <div class="contents-li">
+                            <div class="image">
+                                <%= link_to image_tag(age21.image), @present %>
+                            </div>
+                            <span class="price"><%= age21.price %>円</span>
+                            <span class="youage"><%= age21.youage %>歳へのプレゼント</span>
+                            <span class="present-about"><%= link_to '詳細はこちら', @present %></span>
+                        </div>
+                        <% end %>
+                </li>
+            </ul>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!--
+  <tbody>
+    <% @presents.each do |present| %>
+      <tr>
+        <td><%= present.brand %></td>
+        <td><%= present.price %></td>
+        <td><img src="<%= present.image %>"></td>
+        <td><%= present.myage %></td>
+        <td><%= present.youage %></td>
+        <td><%= present.cat %></td>
+        <td><%= link_to 'Show', present %></td>
+        <td><%= link_to 'Edit', edit_present_path(present) %></td>
+        <td><%= link_to 'Destroy', present, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+<%= link_to 'New Present', new_present_path %>
+  </tbody>
+  -->
+<br>
+<p id="notice"></p>

@@ -1,0 +1,41 @@
+
+<div id="header"><h1>Prres</h1></div>
+
+<div id="contents-wrap">
+
+
+<div id="sidebar-left">
+<ul>
+<% if @result %>
+<div class="profile-image"><img src=""></div>
+<li><%= @userid.username %></li>
+<li><%= @userid.age %> 歳</li>
+
+<div id="profile-about"><%= link_to 'プロフィール', user_registration_path %></div>
+<% end %>
+
+</ul>
+<div id="mypost">
+
+<h3>あなたの投稿</h3>
+
+<% @posts.each do |data| %>
+<p><span><%= data.brand %>: <%= data.price %>円 <%= data.youage %>歳へ</span></p>
+<% end %>
+</div>
+
+
+</div>
+
+
+<div id="sidebar-right">
+</div>
+
+
+<div id="new-present-wrap">
+<%= render 'form', present: @present %>
+
+<%= link_to 'Back', presents_path %>
+
+</div>
+</div>

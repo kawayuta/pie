@@ -1,0 +1,146 @@
+<div id="header"><h1>Prres</h1></div>
+
+<div id="contents-wrap">
+
+<div id="sidebar-left">
+<div id="login-profile-data">
+</div>
+
+</div>
+
+<div id="sidebar-right">
+</div>
+
+<div id="main-contents-wrap"  class="clearfix">
+<div id="profile-edit-wrap">
+
+<div id="profile-edit-box">
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+
+  <h3>アカウント設定</h3>
+<div id="profile-setting-field-wrap">
+
+<div class="field">
+    <%= f.label :avatar do %>
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+    <% end %>
+    </div>
+    
+    <div class="profile-setting-field">
+  <span>ユーザーネームの変更</span><br />
+    <%= f.text_field :username, :placeholder => "ユーザーネーム", :class => "edit-field-username", autofocus: true %>
+    </div>
+
+
+  <div class="profile-setting-field">
+  <span>メールアドレスの変更</span><br />
+    <%= f.email_field :email, :placeholder => "メールアドレス", :class => "edit-field-email", autofocus: true %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="profile-setting-field">
+  <span>新しいパスワード</span><em>(<%= @minimum_password_length %>文字以上)</em><br />
+    <%= f.password_field :password,  :placeholder => "パスワード", :class => "edit-field-email", autocomplete: "off" %>
+    <% if @minimum_password_length %>
+      <br />
+    <% end %>
+  </div>
+
+  <div class="profile-setting-field">
+  <span>新しいパスワードの確認</span><br />
+    <%= f.password_field :password_confirmation, :placeholder => "パスワードの確認", :class => "edit-field-email",  autocomplete: "off" %>
+  </div>
+      </div>
+
+  <h3>カテゴリ設定</h3>
+
+<div id="category-setting-field-wrap">
+    <div class="category-setting-field">
+    <%= f.label :cat_baby_switch, "ベビー" %>
+    <%= f.check_box :cat_baby_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_prescool_switch, "保育園児・幼稚園児" %>
+    <%= f.check_box :cat_prescool_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_juniorscool_switch, "小学生" %>
+    <%= f.check_box :cat_juniorscool_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_highscool_switch, "中学生・高校生" %>
+    <%= f.check_box :cat_highscool_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_universityscool_switch, "大学生・新社会人" %>
+    <%= f.check_box :cat_universityscool_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_senior_switch, "祖母・祖父" %>
+    <%= f.check_box :cat_senior_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_age10s_switch, "10代" %>
+    <%= f.check_box :cat_age10s_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_age20s_switch, "20代" %>
+    <%= f.check_box :cat_age20s_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_age30s_switch, "30代" %>
+    <%= f.check_box :cat_age30s_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_age40s_switch, "40代" %>
+    <%= f.check_box :cat_age40s_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_age50s_switch, "50代" %>
+    <%= f.check_box :cat_age50s_switch,{}, "true", "false" %>
+    </div>
+
+    <div class="category-setting-field">
+    <%= f.label :cat_age60s_switch, "60代" %>
+    <%= f.check_box :cat_age60s_switch,{}, "true", "false" %>
+    </div>
+
+        <div class="category-setting-field">
+    <%= f.label :cat_age70s80s90s_switch, "70・80・90代" %>
+    <%= f.check_box :cat_age70s80s90s_switch,{}, "true", "false" %>
+    </div>
+      </div>
+
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>
+  </div>
+  </div>
+  </div>
+    </div>

@@ -1,0 +1,138 @@
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div id="header">
+  <div id="header-box">
+    <% if @result %>
+         <div class="top-profile-image">
+            <%= link_to image_tag(current_user.avatar.url), user_registration_path %>
+         </div>
+    <% elsif %>
+    <div class="login-head"><%= link_to "login", new_user_session_path%></div>
+    <% end %>
+    <h1><%= link_to "Prres", root_path %></h1>
+  </div>
+</div>
+
+<div id="present-data-wrap">
+
+
+<div id="present-data">
+
+<div class="present-data-image"><%= image_tag(@present.image) %></div>
+
+<div class="likedislike-show">
+<h2>アンケート内容</h2>
+
+<% if current_user.voted_up_on? @present %>
+
+<div class="likedislike-show-like">
+<%= link_to like_present_path(@present), method: :put do %>
+<i class="fa fa-thumbs-o-up fa-2x"></i>
+<% end %>
+<span class="like-count"><%= @present.get_likes.size%></span>
+</div>
+
+<% elsif %>
+
+<div class="likedislike-show-nolike">
+<%= link_to like_present_path(@present), method: :put do %>
+<i class="fa fa-thumbs-o-up fa-2x"></i>
+<% end %>
+<span class="nolike-count"><%= @present.get_likes.size%></span>
+</div>
+
+<% end %>
+
+
+
+<% if current_user.voted_down_on? @present %>
+
+<div class="likedislike-show-dislike">
+<span class="dislike-count"><%= @present.get_dislikes.size %></span>
+<%= link_to dislike_present_path(@present), method: :put do %>
+<i class="fa fa-thumbs-o-down fa-2x"></i>
+<% end %>
+</div>
+
+<% elsif %>
+
+<div class="likedislike-show-nodislike">
+<span class="nodislike-count"><%= @present.get_dislikes.size %></span>
+<%= link_to dislike_present_path(@present), method: :put do %>
+<i class="fa fa-thumbs-o-down fa-2x"></i>
+<% end %>
+</div>
+
+<% end %>
+
+<h4>このプレゼントを良いと思ってる人の年齢層</h4>
+<% @present.votes_for.up.by_type(User).voters.first(8).each do |like_age_data| %>
+<%= like_age_data.age %> 歳
+<% end %>
+<h4>このプレゼントを良くないと思ってる人の年齢層</h4>
+<% @present.votes_for.down.by_type(User).voters.first(8).each do |dislike_age_data| %>
+<%= dislike_age_data.age %> 歳
+<% end %>
+
+</div>
+
+<div class="present-data-about">
+
+<p>
+  <div class="brand-show">
+  <div class="brand-show-title">ブランド</div>
+  <div class="brand-show-data"><%= @present.brand %></div>
+  </div>
+</p>
+
+
+<p>
+  <div class="price-show">
+  <div class="price-show-title">購入価格</div>
+  <div class="price-show-data"><%= @present.price %> 円</div>
+  </div>
+</p>
+
+
+<p>
+  <div class="price-show">
+  <div class="price-show-title">Amazon価格</div>
+  <div class="price-show-data"><%=  %> 円</div>
+  </div>
+</p>
+
+<p>
+  <div class="price-show">
+  <div class="price-show-title">楽天価格</div>
+  <div class="price-show-data"><%=  %> 円</div>
+  </div>
+</p>
+
+<p>
+  <div class="cat-show">
+  <div class="cat-show-title">カテゴリ</div>
+  <div class="cat-show-data"><%= @present.cat %></div>
+  </div>
+</p>
+
+<p>
+  <div class="youage-show">
+  <div class="youage-show-title">贈る相手の年齢</div>
+  <div class="youage-show-data"><%= @present.youage %> 歳</div>
+  </div>
+</p>
+<p>
+  <div class="youage-show">
+  <div class="youage-show-title">贈る相手の性別</div>
+  <div class="youage-show-data"><%= @present.man %></div>
+  </div>
+</p>
+
+
+</div>
+</div>
+
+</div>
+<%= link_to 'Edit', edit_present_path(@present) %> |
+<%= link_to 'Destroy', @present, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', presents_path %>

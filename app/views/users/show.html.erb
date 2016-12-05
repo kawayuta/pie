@@ -1,0 +1,86 @@
+<div id="header">
+  <div id="header-box">
+    <% if @result %>
+         <div class="top-profile-image">
+            <%= link_to image_tag(current_user.avatar.url), user_registration_path %>
+         </div>
+    <% elsif %>
+    <div class="login-head"><%= link_to "login", new_user_session_path%></div>
+    <% end %>
+    <h1><%= link_to "Prres", root_path %></h1>
+  </div>
+</div>
+
+<div id="contents-wrap">
+
+<div id="sidebar-left">
+
+<div id="login-profile-data">
+            <ul>
+                    <div class="profile-image">
+                    <%= image_tag(@user.avatar.url) %>
+                    </div>
+                    <li>
+                    <%= @user.username %>
+                    </li>
+                    <li>
+					
+					<%= @user.age  %>歳
+					</li>
+                        	
+
+                        <% if @userid == @user %>
+
+                      	<% elsif %>
+
+                        	<% if @userid.follows?(@user) %>
+
+								<div id="user-follow-button">
+								<%= link_to unfollow_user_path,  :method => :put do %>
+								<% end %>
+	                  			</div>
+                  
+                      		<% elsif %>
+
+	                    		<div id="user-unfollow-button">
+	                     		<%= link_to follow_user_path,  :method => :put do %>
+								<% end %>
+								</div>
+                        
+                     		 <% end %>
+
+                     	 <% end %>
+
+                     	<ul id="user-action-data">
+                     	 	<li class="user-action-data-follow">
+                     	 	<div><%= @user.followees_count %></div>
+                     	 	</li>
+                        	<li class="user-action-data-follower">
+                        	<div><%= @user.followers_count %></div>
+                        	</li>
+                        </ul>
+
+            </ul>
+        </div>
+
+</div>
+
+
+<div id="main-contents-wrap"  class="clearfix">
+<div id="user-wrap">
+
+<div class="user-profile-image"><img src=""></div>
+<ul>
+<li><%= @user.username %></li>
+<li><%= @userid.follows?(@user) %></li>
+
+<li><%= link_to 'f', follow_user_path,  :method => :put%></li>
+<li><%= link_to 'u', unfollow_user_path,  :method => :put%></li>
+
+</ul>
+<%= link_to 'Edit', edit_user_registration_path%>
+</div>
+
+
+
+</div>

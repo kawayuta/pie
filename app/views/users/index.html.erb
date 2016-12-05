@@ -1,0 +1,174 @@
+
+<script>
+    $(function() {
+        $('.mypage-tab li').click(function() {
+            var index = $('.mypage-tab li').index(this);
+            $('.my-database li').css('display', 'none');
+            $('.my-database li').eq(index).css('display', 'block');
+            $('.mypage-tab li').removeClass('select');
+            $(this).addClass('select')
+        });
+    });
+</script>
+
+<div id="header">
+  <div id="header-box">
+    <% if @result %>
+         <div class="top-profile-image">
+            <%= link_to image_tag(current_user.avatar.url), user_registration_path %>
+         </div>
+    <% elsif %>
+    <div class="login-head"><%= link_to "login", new_user_session_path%></div>
+    <% end %>
+    <h1><%= link_to "Prres", root_path %></h1>
+  </div>
+</div>
+
+<div id="contents-wrap">
+
+<div id="sidebar-left">
+        <div id="login-profile-data">
+<ul>
+<div class="profile-image">
+	<%= link_to image_tag(current_user.avatar.url), user_registration_path %>
+</div>
+<li><%= @userid.username %></li>
+<li>
+	<%= @userid.age  %>歳
+</li>
+
+</ul>
+
+<ul id="user-action-data">
+                     	 	<li class="user-action-data-follow">
+                     	 	<div><%= @user.followees_count %></div>
+                     	 	</li>
+                        	<li class="user-action-data-follower">
+                        	<div><%= @user.followers_count %></div>
+                        	</li>
+</ul>
+
+
+<div id="profile-about"><%= link_to 'ユーザーページの確認', @userid %></div>
+
+</div>
+
+
+
+
+</div>
+
+<div id="main-contents-wrap"  class="clearfix">
+
+<div id="mypage-user-scoreboard">
+ここにグラフ
+</div>
+
+<div id="mypage-tab-nav">
+<ul class="mypage-tab">
+   <li class="mypage-pay-tab select">購入リスト</li>
+   <li class="mypage-enquete-tab">アンケート</li>
+ 　<li class="mypage-friend-tab">友達リスト</li>
+   <li class="mypage-follow-tab">フォロー</li>
+   <li class="mypage-follower-tab">フォロワー</li>
+</ul>
+</div>
+
+<div id="user-wrap">
+
+<ul class="my-database">
+<li class="show get">
+
+<section class="clearfix">
+<h3>あなたの投稿</h3>
+<div id="mypost">
+<% @gets.reverse_each do |data| %>
+
+<div class="mypost-contens-li">
+<div class="mypost-image"><%= link_to image_tag(data.getimage), data %></div>
+<div class="mypost-brand"><%= data.title %></div>
+<div class="mypost-price"><%= data.body %></div>
+<div class="mypost-youage"><%= data.price %> 円</div>
+</div>
+<% end %>
+</div>
+</section>
+
+</li>
+<li class="hide enquete-list">
+
+<section class="clearfix">
+<h3>あなたの投稿</h3>
+<div id="mypost">
+<% @posts.reverse_each do |data| %>
+
+<div class="mypost-contens-li">
+<div class="mypost-image"><%= link_to image_tag(data.image), data %></div>
+<div class="mypost-brand"><%= data.brand %></div>
+<div class="mypost-price"><%= data.price %></div>
+<div class="mypost-youage"><%= data.youage %>歳へ</div>
+</div>
+<% end %>
+</div>
+</section>
+</li>
+<li class="hide friend-list">ここに友達リスト (frineds 相互フォロワー)</li>
+<li class="hide follow-list">
+<section class="clearfix">
+
+	<% @following_user.each do |x| %>
+		<div id="mypage-following-contents-li">
+			<div class="mypage-following-avatar"><%= link_to image_tag(x.avatar.url), x %></div>
+			<div class="mypage-following-username"><%= x.username%></div>
+
+
+			<div class="mypage-user_follow_count">
+
+			<div class="mypage-friends_count">
+			<div>sss</div>
+			</div>
+
+			<div class="mypage-followees_count">
+			<div><%= x.followees_count %></div>
+			</div>
+
+			<div class="mypage-followers_count">
+			<div><%= x.followers_count %></div>
+			</div>
+
+			</div>
+
+		</div>
+
+		<% end %></section>
+</li>
+<li class="hide follower-list">
+<section class="clearfix">
+	<h3>フォロワー</h3>
+	<% @follower_user.each do |x| %>
+		<div id="mypage-follower-contents-li">
+			<div class="mypage-following-avatar"><%= link_to image_tag(x.avatar.url), x %></div>
+			<div class="mypage-following-username"><%= x.username%></div>
+
+			<% dataage =  @datatime.to_i - @user.birthday.strftime("%Y%m%d").to_i %>
+			<div class="mypage-following-age"><%= dataage / 10000  %>歳</div>
+
+			<div class="mypage-user_follow_count">
+			<div class="mypage-followees_count">
+			<div><%= x.followees_count %></div>
+			</div>
+			<div class="mypage-followers_count">
+			<div><%= x.followers_count %></div>
+			</div>
+			</div>
+		</div>
+	<% end %></section>
+</li>
+	</ul>
+
+<%= link_to 'Edit', edit_user_registration_path%>
+</div>
+
+
+
+</div>
