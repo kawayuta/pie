@@ -1,43 +1,75 @@
-<div id="header"><h1>Prres</h1></div>
+
+<div id="header">
+  <div id="header-box">
+         <div class="top-profile-image">
+            <%= link_to image_tag(current_user.avatar.url), user_registration_path %>
+         </div>
+    <h1><%= link_to "Shopie", root_path %></h1>
+  </div>
+</div>
 
 <div id="contents-wrap">
 
 <div id="sidebar-left">
+
 <div id="login-profile-data">
+            <ul>
+                    <div class="profile-image">
+                    <%= image_tag(@user.avatar.url) %>
+                    </div>
+                   
+                    <li><%= @user.username %></li>
+                    <li><%= @user.age  %>歳</li>
+
+
+
+                      <ul id="user-action-data">
+                        <li class="user-action-data-follow">
+                        <div class="follow-count"><%= @user.followees_count %></div>
+                        </li>
+                          <li class="user-action-data-follower">
+                          <div><%= @user.followers_count %></div>
+                          </li>
+                        </ul>
+
+            </ul>
+
+
+
+
+        </div>
 </div>
 
-</div>
-
-<div id="sidebar-right">
-</div>
 
 <div id="main-contents-wrap"  class="clearfix">
-<div id="profile-edit-wrap">
-
-<div id="profile-edit-box">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
 
+<div id="profile-edit-box" class="clearfix">
+
   <h3>アカウント設定</h3>
+
 <div id="profile-setting-field-wrap">
 
-<div class="field">
+<div class="profile-image-field">
+                    <%= image_tag(@user.avatar.url) %>
+                    </div>
+ <div class="field clearfix">
     <%= f.label :avatar do %>
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
     <% end %>
     </div>
-    
-    <div class="profile-setting-field">
-  <span>ユーザーネームの変更</span><br />
+
+<div class="profile-setting-field">
+  <span>ユーザーネーム</span><br />
     <%= f.text_field :username, :placeholder => "ユーザーネーム", :class => "edit-field-username", autofocus: true %>
     </div>
 
-
   <div class="profile-setting-field">
-  <span>メールアドレスの変更</span><br />
+  <span>メールアドレス</span><br />
     <%= f.email_field :email, :placeholder => "メールアドレス", :class => "edit-field-email", autofocus: true %>
   </div>
 
@@ -46,10 +78,10 @@
   <% end %>
 
   <div class="profile-setting-field">
-  <span>新しいパスワード</span><em>(<%= @minimum_password_length %>文字以上)</em><br />
+  <span>新しいパスワード(<%= @minimum_password_length %>文字以上)</span><br />
     <%= f.password_field :password,  :placeholder => "パスワード", :class => "edit-field-email", autocomplete: "off" %>
     <% if @minimum_password_length %>
-      <br />
+
     <% end %>
   </div>
 
@@ -57,90 +89,105 @@
   <span>新しいパスワードの確認</span><br />
     <%= f.password_field :password_confirmation, :placeholder => "パスワードの確認", :class => "edit-field-email",  autocomplete: "off" %>
   </div>
-      </div>
-
-  <h3>カテゴリ設定</h3>
-
-<div id="category-setting-field-wrap">
-    <div class="category-setting-field">
-    <%= f.label :cat_baby_switch, "ベビー" %>
-    <%= f.check_box :cat_baby_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_prescool_switch, "保育園児・幼稚園児" %>
-    <%= f.check_box :cat_prescool_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_juniorscool_switch, "小学生" %>
-    <%= f.check_box :cat_juniorscool_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_highscool_switch, "中学生・高校生" %>
-    <%= f.check_box :cat_highscool_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_universityscool_switch, "大学生・新社会人" %>
-    <%= f.check_box :cat_universityscool_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_senior_switch, "祖母・祖父" %>
-    <%= f.check_box :cat_senior_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_age10s_switch, "10代" %>
-    <%= f.check_box :cat_age10s_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_age20s_switch, "20代" %>
-    <%= f.check_box :cat_age20s_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_age30s_switch, "30代" %>
-    <%= f.check_box :cat_age30s_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_age40s_switch, "40代" %>
-    <%= f.check_box :cat_age40s_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_age50s_switch, "50代" %>
-    <%= f.check_box :cat_age50s_switch,{}, "true", "false" %>
-    </div>
-
-    <div class="category-setting-field">
-    <%= f.label :cat_age60s_switch, "60代" %>
-    <%= f.check_box :cat_age60s_switch,{}, "true", "false" %>
-    </div>
-
-        <div class="category-setting-field">
-    <%= f.label :cat_age70s80s90s_switch, "70・80・90代" %>
-    <%= f.check_box :cat_age70s80s90s_switch,{}, "true", "false" %>
-    </div>
-      </div>
-
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <h3>身体データ - 身体の情報を入力すると、あなたや友人に最適な商品情報をお届けすることができます。</h3>
+<div id="body-setting-field-wrap">
+
+<div class="profile-setting-field">
+    <div class="body_height-field">
+  <span>身長</span>
+  <%= f.number_field :body_height %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="body_width-field">
+    <span>体重</span>
+    <%= f.number_field :body_width %>
+    </div>
+</div>
+
+
+<div class="profile-setting-field">
+    <div class="leg_height-field">
+    <span>脚の長さ</span>
+    <%= f.number_field :leg_height %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="leg_width-field">
+    <span>脚の太さ</span>
+    <%= f.number_field :leg_width %>
+    </div>
+</div>
+
+
+<div class="profile-setting-field">
+    <div class="arm_height-field">
+    <span>腕の長さ</span>
+    <%= f.number_field :arm_height %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="arm_width-field">
+    <span>腕の太さ</span>
+    <%= f.number_field :arm_width %>
+    </div>
+</div>
+
+
+<div class="profile-setting-field">
+    <div class="shoulder_width-field">
+    <span>肩幅</span>
+    <%= f.number_field :shoulder_width %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="body_bust-field">
+    <span>バスト</span>
+    <%= f.number_field :body_bust %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="body_west-field">
+    <span>ウエスト</span>
+    <%= f.number_field :body_west %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="body_hip-field">
+    <span>ヒップ</span>
+    <%= f.number_field :body_hip %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="foot_height-field">
+    <span>靴のサイズ</span>
+    <%= f.number_field :foot_height %>
+    </div>
+</div>
+
+<div class="profile-setting-field">
+    <div class="ring_finger_width-field">
+     <span>指輪のサイズ</span>
+     <%= f.number_field :ring_finger_width %>
+    </div>
+</div>
+</div>
+
+  </div> 
+  <div class="user_account_update_button">
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+ </div>
 <% end %>
 
-<%= link_to "Back", :back %>
-  </div>
-  </div>
-  </div>
-    </div>
+</div>

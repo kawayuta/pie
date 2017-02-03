@@ -1,37 +1,37 @@
-<%= form_for(get) do |f| %>
-  <% if get.errors.any? %>
+<%= form_for(@get, html: { multipart: true, class: "dropzone"}) do |f|  %>
+  <% if @get.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(get.errors.count, "error") %> prohibited this get from being saved:</h2>
-
       <ul>
-      <% get.errors.full_messages.each do |message| %>
+      <% @get.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="field_get_title">
+    <%= f.text_field :title, :placeholder=> "購入品の名前" %>
   </div>
 
-  <div class="field">
-    <%= f.label :getimage %>
+  <div class="field_get_price">
+    <%= f.number_field :price, :placeholder=> "価格" %>
+  </div>
+
+
+  <div class="field_get_body">
+    <%= f.text_area :body, :placeholder=> "ひとこと" %>
+  </div>
+
+  <div class="field_get_image">
     <%= f.file_field :getimage %>
   </div>
 
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
+
+  <div class=" clearfix">
   </div>
 
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-
-  <div class="actions">
+  <div class="actions_get_image">
     <%= f.submit %>
   </div>
 <% end %>

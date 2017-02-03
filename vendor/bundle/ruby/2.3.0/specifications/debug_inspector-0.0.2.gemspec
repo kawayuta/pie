@@ -15,8 +15,8 @@ Gem::Specification.new do |s|
   s.extensions = ["ext/debug_inspector/extconf.rb".freeze]
   s.files = ["ext/debug_inspector/extconf.rb".freeze]
   s.homepage = "https://github.com/banister/debug_inspector".freeze
-  s.rubygems_version = "2.6.4".freeze
+  s.rubygems_version = "2.6.10".freeze
   s.summary = "A Ruby wrapper for the MRI 2.0 debug_inspector API".freeze
 
-  s.installed_by_version = "2.6.4" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.6.10" if s.respond_to? :installed_by_version
 end

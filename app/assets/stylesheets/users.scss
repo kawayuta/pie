@@ -1,4 +1,127 @@
 
+#mycollection-create-button {
+	width:200px;
+	height:120px;
+	float:right;
+	margin-top:40px;
+	margin-bottom:38px;
+	margin-right:40px;
+	background-color:#FF989F;
+	border-radius:10px;
+	color:#FFF;
+	font-size:33px;
+	text-align:center;
+	line-height:3.3em;
+	
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+}
+#mycollection-create-box {
+	width:100vw;
+	height:100vh;
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	display:none;
+	background-color:rgba(0,0,0,0.5);
+	z-index:5;
+}
+
+
+#mycollection-create-box-form {
+	
+	width:-webkit-calc(100% - 150px);
+	height:600px;
+
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0),0 6px 12px 0 rgba(0,0,0,0.1),0 2px 2px 0 rgba(0,0,0,0.1);
+	position:absolute;
+	left:0;
+	right:0;
+	top: -webkit-calc(50% - 300px);
+	margin:0 auto;
+	border-radius:10px;
+	background-color:#FFF;
+}
+
+#mycollection-create-box-form .field_mycore input{
+	width:-webkit-calc(100% - 200px);
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	border-bottom: 1px solid #FF989F;
+	margin-top:50px;
+	margin-left:100px;
+	height:100px;
+	margin-top:50px;
+	margin-left:100px;
+	font-size:33px;
+
+}
+
+
+#mycollection-create-box-form .field_mycore_area textarea {
+
+	width:-webkit-calc(100% - 220px);
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	border-bottom: 1px solid #FF989F;
+	background-color:#FFF;
+	height:280px;
+	margin-top:50px;
+	margin-left:100px;
+	font-size:33px;
+	resize: none;
+}
+
+.mycollection-create-btn {
+	width:-webkit-calc(100% - 150px);
+	height:300px;
+	position:absolute;
+	left:0;
+	right:0;
+	top: -webkit-calc(50% + 300px);
+	margin:0 auto;
+}
+
+
+
+.mycollection-create-btn li {
+	width:-webkit-calc(50vw - 95px);
+	height:150px;
+	background-color:#FFF;
+	list-style:none;
+	border-radius:10px;
+	margin-top:40px;
+	float:left;
+	overflow:hidden;
+}
+
+.mycollection-create-btn li .close-add-collection {
+
+
+font-size:35px;
+text-align:center;
+line-height:4em;
+color:#DDD;
+
+}
+
+.mycollection-create-btn li input {
+width:100%;
+height:150px;
+display:block;
+background-color:#FF989F;
+border:none;
+color:#FFF;
+font-size:35px;
+}
+
+.mycollection-create-btn li + li {
+margin-left:40px;
+}
+
 .user-profile-image {
 	width:160px;
 	height:160px;
@@ -13,30 +136,47 @@
 	border:2px solid #ECF2F3;
 }
 #profile-edit-box {
-	width:680px;
+	width:870px;
 	margin:0 auto;
+	background-color:#FFF;
 }
 
 #profile-edit-box h3 {
-	
-margin-top:30px;
-margin-bottom:20px;
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:15px;
+	font-weight:normal;
+	border: 1px solid #EEE;
+	margin-bottom:20px;
+	background-color:#fcfcfc;
+	color:#7D7D7D;
+	font-size:13px;
 }
 
 #profile-setting-field-wrap{
-	
-	height:160px;
-
+	width:870px;
+	height:180px;
+	padding-left:15px;
+	background-color:#FFF;
 }
 
 #category-setting-field-wrap{
-	
-	height:320px;
+	height:215px;
+	width:100%;
+	padding-left:15px;
+}
 
+#body-setting-field-wrap{
+	width:100%;
+	height:210px;
+	text-align:left;
+	padding-left:14px;
+	padding-bottom:20px;
+	background-color:#FFF;
 }
 
 #profile-edit-box .profile-setting-field {
-	width:320px;
+	width:190px;
 	height:60px;
 	margin-left:10px;
 	margin-right:10px;
@@ -44,8 +184,11 @@ margin-bottom:20px;
 	float:left;
 }
 
+#profile-edit-box .profile-setting-field span {
+	font-size:10px;
+}
 #profile-edit-box .profile-setting-field input{
-	width:290px;
+	width:160px;
 	height:35px;
 	margin-top:5px;
 	padding-left: 15px;
@@ -56,7 +199,7 @@ margin-bottom:20px;
 }
 
 .category-setting-field {
-	width:150px;
+	width:120px;
 	margin-left:10px;
 	margin-right:10px;
 	float:left;
@@ -64,14 +207,15 @@ margin-bottom:20px;
 
 .category-setting-field label {
 position:relative;
-  width:150px;
-top:33px;
+  width:120px;
+top:30px;
 text-align:center;
+font-size:10px;
 }
 
 .category-setting-field input[type="checkbox"]{
   -webkit-appearance: none;
-  width:150px;
+  width:120px;
   height:45px;
   border:2px solid #DDD;
   border-radius:3px;
@@ -79,89 +223,1144 @@ text-align:center;
   opacity:0.5;
   margin-right:20px;
 }
-.category-setting-field input[type="checkbox"]:checked{
-  background:#FF7D7C;
+.category-setting-field input[type="checkbox"]:checked {
+  border:2px solid #FF7D7C;
   opacity:1;
-  border:none;
   -webkit-transition: all .2s linear;
 }
 
 
-#user-follow-button {
+.follow {
+	background-color:#FF7D7C !important;
+}
+
+.follow span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow  span:before{
+	content: "Follow" !important;
+	color:#ccc !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
 	
+}
+
+
+.follow-0 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-0 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-0 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-0  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-1 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-1 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-1 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-1  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-2 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-2 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-2 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-2  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-3 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-3 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-3 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-3  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-4 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-4 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-4 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-4  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-5 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-5 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-5 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-5  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-6 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-6 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-6 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-6  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-7 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-7 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-7 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-7  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-8 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-8 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-8 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-8  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+
+
+.follow-9 {
+	background-color:#FF7D7C !important;
+}
+
+.follow-9 span:before{
+	content: "Following" !important;
+	color:#FFF !important;
+position:absolute;
+left:0px;
+f:0px;
+margin:0 auto;
+}
+
+.unfollow-9 {
+	background-color:#FFF !important;
+	width:150px;
+}
+
+.unfollow-9  span:before{
+	content: "Follow" !important;
+	color:#696969 !important;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+	
+}
+
+.follow-btn {
+	display:block;
+	width:250px;
+	height:80px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+
+	margin-right:40px;
+	float:right;
+	top:-750px;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+text-align:center;
+}
+
+.follow-btn span:before{
+	content: "Follow";
+	color:#ccc;
+line-height:2.6em;
+font-size:28px;
+
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+text-align:center;
+}
+
+.follow-btn-0 {
+	display:block;
 	width:150px;
 	height:40px;
-	background-color:#FF7D7C;
 	border:1px solid #FF7D7C;
 	border-radius:30px;
 	color:#FFF;
 	margin: 0 auto;
 	margin-top:20px;
-
+position:relative;
 }
-#user-follow-button:hover {
-	
-	-webkit-transition: all .15s linear; 
-	background-color:#FFF;
+.follow-btn-0 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-0 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+.follow-btn-1 {
+	display:block;
+	width:150px;
+	height:40px;
 	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-1 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-1 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.follow-btn-2 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-2 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-2 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+.follow-btn-3 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-3 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-3 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.follow-btn-4 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-4 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-4 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.follow-btn-5 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-5 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-5 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.follow-btn-6 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-6 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-6 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.follow-btn-7 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-7 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-7 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.follow-btn-8 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-8 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-8 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.follow-btn-9 {
+	display:block;
+	width:150px;
+	height:40px;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+position:relative;
+}
+.follow-btn-9 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.follow-btn-9 span:before{
+	content: "Follow";
+	color:#696969;
+line-height:2.6em;
+}
+
+
+.following-btn {
+	display:block;
+	width:250px;
+	height:80px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin-top:20px;
+	margin-right:40px;
+	float:right;
+	top:-750px;
+	position:relative;
 
 }
-#user-follow-button a:before{
+
+.following-btn span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+text-align:center;
+}
+
+.following-btn span:before{
 	content: "Following";
+	color:#fff;
+line-height:2.6em;
+font-size:28px;
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+text-align:center;
 }
 
 
-#user-follow-button a:hover:before{
-	content: "Unfollow";
-	color:#999;
-}
-
-#user-follow-button a {
-	text-align:center;
-	line-height:3em;
-	color:#FFF;
-	text-decoration:none;
-	width:100%;
-	height:45px;
+.following-btn-0 {
 	display:block;
-}
-
-#user-unfollow-button {
-	
 	width:150px;
 	height:40px;
-	background-color:#FFF;
-	border:1px solid #FF7D7C;
-	border-radius:30px;
-	color:#999;
-	margin: 0 auto;
-	margin-top:20px;
-}
-
-#user-unfollow-button:hover {
-	
-	-webkit-transition: all .15s linear; 
 	background-color:#FF7D7C;
 	border:1px solid #FF7D7C;
-
-}
-#user-unfollow-button a:before{
-	content: "Follow";
-}
-#user-unfollow-button a:hover:before{
-	content: "Follow";
+	border-radius:30px;
 	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
 
 }
-#user-unfollow-button a {
 
-	text-align:center;
-	line-height:3em;
-	color:#999;
-	text-decoration:none;
-	width:100%;
-	height:45px;
+.following-btn-0 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-0 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+
+.following-btn-1 {
 	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-1 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-1 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-2 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-2 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-2 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-3 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-3 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-3 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-4 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-4 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-4 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-5 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-5 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-5 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-6 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-6 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-6 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-7 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-7 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-7 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-8 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-8 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-8 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.following-btn-9 {
+	display:block;
+	width:150px;
+	height:40px;
+	background-color:#FF7D7C;
+	border:1px solid #FF7D7C;
+	border-radius:30px;
+	color:#FFF;
+	margin: 0 auto;
+	margin-top:20px;
+	position:relative;
+
+}
+
+.following-btn-9 span {
+position:absolute;
+left:0px;
+right:0px;
+margin:0 auto;
+width:80px;
+text-align:center;
+}
+
+.following-btn-9 span:before{
+	content: "Following";
+	color:#FFF;
+line-height:2.6em;
+}
+
+
+.follow-btn:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-0:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-1:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-2:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-3:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-4:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-5:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-6:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-7:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-8:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.follow-btn-9:hover {
+	
+	-webkit-transition: all .15s linear; 
+	border:1px solid #FF7D7C;
+	background-color:#FF7D7C;
+}
+
+.following-btn:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-0:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-1:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-2:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-3:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-4:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-5:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-6:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-7:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-8:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
+}
+
+.following-btn-9:hover {
+	
+	-webkit-transition: all .15s linear; 
+	background-color:#FFF;
+	border:1px solid #FF7D7C;
+
 }
 
 #mypost {
@@ -253,21 +1452,21 @@ color:#AAA;
 
 .mypage-following-avatar {
 	
-	width:100px;
-	height:100px;
+	width:70px;
+	height:70px;
 	overflow:hidden;
 	position:relative;
 	margin:0 auto;
-	margin-top:-50px;
 	z-index:2;
-	border-radius:50%;
-	border:1px solid #FF7D7C;
+	margin-top:15px;
+	border-radius:5px;
+	border:1px solid #eee;
 }
 
 .mypage-following-avatar img {
 	
   width: auto;
-	height:100%;
+	height:70%;
 display: block;
 position: absolute;
   min-width: 100%;
@@ -281,8 +1480,8 @@ position: absolute;
 }
 
 .mypage-following-username {
-position:relative;
-top:-30px;
+margin-top:15px;
+margin-bottom:30px;
 	text-align:center;
 
 }
@@ -293,6 +1492,8 @@ top:-30px;
 	width:300px;
 	height:50px;
 	margin: 0 auto;
+	padding-top:10px;
+	border-top:1px solid #EEE;
 }
 
 
@@ -352,26 +1553,71 @@ color:#AAA;
 margin-left:20px;
 }
 
+#mypage-user-value {
+	width:625px;
+	height:70px;
+	background-color:#FFF;
+	overflow:hidden;
+	border-left: 1px solid #ECF2F3;
+	border-right: 1px solid #ECF2F3;
+	border-top: 1px solid #ECF2F3;
+	border-bottom: 1px solid #ECF2F3;
+	margin-bottom:15px;
+	
+}
+
+
+#mypage-user-value div {
+width:155.5px;
+height:67px;
+border-bottom:3px solid #EEE;
+float:left;
+text-align:center;
+}
+
+#mypage-user-value div h2 {
+font-size:11px;
+font-weight:normal;
+line-height:3em;
+}
+
+#mypage-user-value div + div {
+
+border-left:1px solid #EEE;
+}
 #mypage-user-scoreboard {
 	
-	width:1020px;
-	height:270px;
+	width:625px;
+	height:190px;
 	background-color:#FFF;
-
+	overflow:hidden;
 	border-left: 1px solid #ECF2F3;
 	border-right: 1px solid #ECF2F3;
 	border-top: 1px solid #ECF2F3;
 
 }
 
+#mypage-user-scoreboard #chart-1 {
+	position:relative;
+	left:-25px
+}
+
 #mypage-tab-nav {
 	
-	width:1020px;
+	width:625px;
 	height:80px;
 	background-color:#FFF;
 	border-left: 1px solid #ECF2F3;
 	border-right: 1px solid #ECF2F3;
 	border-top: 1px solid #ECF2F3;
+	border-bottom: 1px solid #ECF2F3;
+}
+
+
+#mypage-tab-nav ul {
+	width:625px;
+	position:relative;
+	left:-21px;
 }
 
 #mypage-tab-nav li {
@@ -381,13 +1627,90 @@ margin-left:20px;
 
 	margin-left:10px;
 	margin-right:10px;
-	width:130px;
+	width:98px;
 	height:40px;
-	border-radius:30px;
+	border-radius:10px;
 	border: 1px solid #eee;
 	text-align:center;
-	line-height:3em;
+	line-height:3.3em;
 	position:relative;
 	top:-15px;
-	font-size:13px;
+	font-size:11px;
+}
+
+#mypost-get {
+	
+}
+
+.mypost-get-contens-li {
+	
+background-color:#FFF;
+	width:143.5px;
+	height:143.5px;
+	margin-right:15px;
+	margin-bottom:15px;
+	border:1px solid #ECF2F3;
+	float:left;
+}
+.mypost-get-image {
+	width:130px;
+	height:130px;
+	top:7px;
+	margin: 0 auto;
+	overflow:hidden;
+	position:relative;
+}
+
+
+.mypost-get-image img {
+	
+width: auto;
+height:130px;
+display: block;
+position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+     -moz-transform: translate3d(-50%, -50%, 0);
+           -ms-transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+.settings-head-box  {
+	width:100%;
+	height:50px;
+	background-color:#FFF;
+}
+.settings-head-box div{
+	float:left;
+	width:150px;
+	height:50px;
+	text-align:center;
+line-height:3.7em;
+border-bottom:3px solid #EEE;
+}
+
+.settings-head-box div + div{
+border-left:1px solid #EEE;
+}
+
+.agree_setting_password {
+	width:100%;
+	background-color:#FFF;
+}
+
+.agree_setting_password .field {
+	padding-top:20px;
+	margin-left:20px;
+}
+
+.user_account_update_button {
+border-top:1px solid #EEE;
+padding-top:20px;
+padding-left:20px;
+padding-bottom:20px;
+	width:100%;
+	background-color:#FFF;
 }

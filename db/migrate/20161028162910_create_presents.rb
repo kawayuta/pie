@@ -11,6 +11,13 @@ class CreatePresents < ActiveRecord::Migration[5.0]
       t.string :cat
       t.string :man
       t.string :enquete
+      t.string :poll_1
+      t.string :poll_2
+      t.string :poll_3
+      t.string :poll_4
+
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

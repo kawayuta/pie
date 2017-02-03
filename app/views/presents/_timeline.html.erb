@@ -1,0 +1,197 @@
+ <% if @eee == [] %>
+  <div class="post-notfound">
+  投稿がありません。
+  </div>
+  <% else %>
+  <% end %>
+
+<%   @eee.each do |get| %>
+  <% if get.kind_of?(Present) %>  
+    <li class="post">
+      <div id="get-poster-profile">
+        <div class="get-post-user-avatar"><%= link_to image_tag(User.find(get.created_by).avatar.url), User.find(get.created_by) %></div>
+        <div class="get-post-user-username"><%= User.find(get.created_by).username %></div>
+        <div class="get-post-user-time">
+        <%= link_to get do %>
+        <%= get.created_at.strftime("%Y年%m月%d日") %>
+        <% end %>
+        </div>
+
+            <div class="tl-post-type-present">
+        アンケート
+        </div>
+
+     </div>
+
+     <div class="get-post-user-title"><span><%= get.title %></span></div>
+        <div class="get-post-user-body"><%= get.enquete %></div>
+        <div class="clearfix">
+          <div class="get-getimage">
+              <%= link_to image_tag(get.image.url, :size => "600x600"),get.image.url, :rel => "lightbox" %>
+          </div>
+
+
+<div id="poll_button_timeline">
+          <ul>
+
+          <% @present_id = params[:id] %>
+          <% @user_id = current_user.id%>
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @userid, get.id, 1])%>
+           
+              <%= link_to poll_first_present_path(get), method: :put do %>
+              <li class="poll_1_checked">最高！_true <%= @poll_1%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_first_present_path(get), method: :put do %>
+              <li class="poll_1">最高！ <%= @poll_1%></li>
+              <% end %>
+
+          <% end %>
+
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @userid, get.id, 2])%>
+           
+              <%= link_to poll_second_present_path(get), method: :put do %>
+              <li class="poll_2_checked">いいね_true <%= @poll_2%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_second_present_path(get), method: :put do %>
+              <li class="poll_2">いいね <%= @poll_2 %></li>
+              <% end %>
+
+          <% end %>
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @userid, get.id,3])%>
+           
+              <%= link_to poll_third_present_path(get), method: :put do %>
+              <li class="poll_3_checked">まぁまぁ_true  <%= @poll_3%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_third_present_path(get), method: :put do %>
+              <li class="poll_3">まぁまぁ <%= @poll_3%></li>
+              <% end %>
+
+          <% end %>
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @userid, get.id, 4])%>
+           
+              <%= link_to poll_four_present_path(get), method: :put do %>
+              <li class="poll_4_checked">うーん..._true <%= @poll_4%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_four_present_path(get), method: :put do %>
+              <li class="poll_4">うーん... <%= @poll_4%></li>
+              <% end %>
+
+          <% end %>
+          </ul>
+       </div>
+
+         <div class="likedislike-timeline-get">
+                                  <% if current_user.voted_up_on? get %>
+                                      <div class="likedislike-like-timeline">
+                                          <%= link_to like_present_path(get), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-timeline">
+                                              <%= link_to like_present_path(get), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? get %>
+                                                  <div class="likedislike-dislike-timeline">
+                                                      
+                                                      <%= link_to dislike_present_path(get), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-timeline">
+                                                          
+                                                          <%= link_to dislike_present_path(get), method: :put do %>
+                                                              <i class="fa fa-heart fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %> </div>
+
+        <div class="get-price"><span>¥ <%= get.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></span></div>
+        </div>
+        
+
+    </li>
+  <% else %>
+    <li class="post">
+  <div id="get-poster-profile">
+        <div class="get-post-user-avatar"><%= link_to image_tag(User.find(get.created_by).avatar.url), User.find(get.created_by) %></div>
+        <div class="get-post-user-username"><%= User.find(get.created_by).username %></div>
+        <div class="get-post-user-time">
+        <%= link_to get do %>
+        <%= get.created_at.strftime("%Y年%m月%d日") %>
+        <% end %>
+        </div>
+
+        <div class="tl-post-type-get">
+        購入
+        </div>
+
+  </div>
+        <div class="get-post-user-title"><span><%= get.title %></span></div>
+        <div class="get-post-user-body"><%= get.body %></div>
+        <div class="clearfix">
+          <div class="get-getimage">
+              <%= link_to image_tag(get.getimage.url, :size => "600x600"),get.getimage.url, :rel => "lightbox" %>
+          </div>
+
+         <div class="likedislike-timeline-get">
+                                  <% if current_user.voted_up_on? get %>
+                                      <div class="likedislike-like-timeline">
+                                          <%= link_to like_get_path(get), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-timeline">
+                                              <%= link_to like_get_path(get), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? get %>
+                                                  <div class="likedislike-dislike-timeline">
+                                                      
+                                                      <%= link_to dislike_get_path(get), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-timeline">
+                                                          
+                                                          <%= link_to dislike_get_path(get), method: :put do %>
+                                                              <i class="fa fa-heart fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %> </div>
+
+        <div class="get-price"><span>¥ <%= get.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></span></div>
+        <div class="get-shopname"><span><%= get.shopcat %></span></div>
+        </div>
+        
+    </li>
+  <% end %>
+  
+<% end %>
+

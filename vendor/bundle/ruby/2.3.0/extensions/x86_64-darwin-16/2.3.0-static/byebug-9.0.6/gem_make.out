@@ -1,0 +1,32 @@
+current directory: /Users/216q013/Workspace/rails/Presst/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+/Users/216q013/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20170201-9940-61ltvw.rb extconf.rb 
+Ignoring debug_inspector-0.0.2 because its extensions are not built.  Try: gem pristine debug_inspector --version 0.0.2
+Ignoring ffi-1.9.14 because its extensions are not built.  Try: gem pristine ffi --version 1.9.14
+Ignoring json-2.0.2 because its extensions are not built.  Try: gem pristine json --version 2.0.2
+Ignoring kgio-2.11.0 because its extensions are not built.  Try: gem pristine kgio --version 2.11.0
+Ignoring mysql2-0.4.5 because its extensions are not built.  Try: gem pristine mysql2 --version 0.4.5
+Ignoring nokogiri-1.6.8.1 because its extensions are not built.  Try: gem pristine nokogiri --version 1.6.8.1
+Ignoring puma-3.6.2 because its extensions are not built.  Try: gem pristine puma --version 3.6.2
+Ignoring raindrops-0.17.0 because its extensions are not built.  Try: gem pristine raindrops --version 0.17.0
+Ignoring rmagick-2.16.0 because its extensions are not built.  Try: gem pristine rmagick --version 2.16.0
+Ignoring sqlite3-1.3.12 because its extensions are not built.  Try: gem pristine sqlite3 --version 1.3.12
+Ignoring unf_ext-0.0.7.2 because its extensions are not built.  Try: gem pristine unf_ext --version 0.0.7.2
+Ignoring unicorn-5.2.0 because its extensions are not built.  Try: gem pristine unicorn --version 5.2.0
+Ignoring websocket-driver-0.6.4 because its extensions are not built.  Try: gem pristine websocket-driver --version 0.6.4
+creating Makefile
+
+current directory: /Users/216q013/Workspace/rails/Presst/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/216q013/Workspace/rails/Presst/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/216q013/Workspace/rails/Presst/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20170201-9940-qvr4ga/byebug

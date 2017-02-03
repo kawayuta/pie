@@ -1,0 +1,509 @@
+<div class="header-userpage-sp-top">
+
+<div class="reload-button-sp"><%= link_to root_path do %><i class="fa fa-chevron-left" aria-hidden="true"></i><% end %></div>
+  <h1><%= link_to "profile", root_path %></h1>
+
+  </div>
+  
+<div id="header-userpage-sp">
+<style>body {background-color:#FFFFFF!important;</style>
+
+  <div class="user-image-sp"><%= image_tag @user.avatar%></div>
+  <div class="user-username-sp"><%= @user.username %></div>
+
+
+
+
+<div class="user-tab-button">
+	<div class="user-follow-sp"><%= @user.followees_count %></div>
+	<div class="user-follower-sp"><%= @user.followers_count %></div>
+	<div class="sort-select-user-sp"><i class="fa fa-paint-brush fa-5x"></i></div>
+	<div><i class="fa fa-thumbs-o-up fa-5x"></i></div>
+	<div class="sort-select-user-sp-star"><i class="fa fa-star fa-5x"></i></div>
+	<div class="sort-select-user-sp-heart"><i class="fa fa-heart fa-5x"></i></div>
+</div>
+
+
+ </div>
+
+                <% if @userid == @user %>
+                      	<% elsif %>
+
+                        	<% if @userid.follows?(@user) %>
+                                <%= link_to follow_user_path, class:"following-btn",  :method => :put, remote: :true do %><span></span>
+                                 <% end %>
+                  
+                      		<% else %>
+
+                                <%= link_to follow_user_path, class:"follow-btn",  :method => :put, remote: :true do %><span></span>
+                                 <% end %>
+                        
+                     		 <% end %>
+
+                     	 <% end %>
+
+
+<div class="user-tab-button-contents">
+
+
+
+	<div class="tab-sort-li hide">
+
+
+      <div class="follower-sp-user-index">
+          <ul>
+
+                <% @user.followees(@users).each do |x| %>
+
+                      <li>
+
+                          <div class="follower-sp-user-index-avatar"><%= link_to image_tag(x.avatar.url), x %></div>
+                          <div class="follower-sp-user-index-username"><%= x.username%></div>
+                          <div class="follower-sp-user-index-userpage"><%= link_to user_path (x) do%><i class="fa fa-user" aria-hidden="true"></i><% end %></div>
+
+
+                      </li>
+
+                <% end %>
+
+
+          </ul>
+      </div>
+
+
+   </div>
+
+
+
+
+	<div class="tab-sort-li hide">
+
+   <div class="follower-sp-user-index">
+          <ul>
+
+                <% @user.followers(@users).each do |x| %>
+
+                      <li>
+
+                          <div class="follower-sp-user-index-avatar"><%= link_to image_tag(x.avatar.url), x %></div>
+                          <div class="follower-sp-user-index-username"><%= x.username%></div>
+                          <div class="follower-sp-user-index-userpage"><%= link_to user_path (x) do%><i class="fa fa-user" aria-hidden="true"></i><% end %></div>
+
+                      </li>
+
+                <% end %>
+
+          </ul>
+      </div>
+
+      </div>
+
+
+
+
+
+
+
+	<div class="tab-sort-li show">
+  <div class="mycollection_title_h3"><h3>COLLECTIONS</h3></div>
+
+
+   <% i = 0 %>
+
+ <% if @mycollection == [] %>
+    <div class="clearfix"></div>
+  <div class="s-post-notfound">
+  コレクションがありません。
+  </div>
+  <% else %>
+  <% end %>
+
+   <% @mycollection.each do |core| %>
+
+   <script type="text/javascript">
+     
+     $(function() {
+
+         $('#user_mycolle_<%= i %>').click(function(){
+         $("#user_mycolle_view_<%= i %>").slideDown();
+         console.log("ddddd");
+         });
+
+         $('#user_mycolle_close_<%= i %>').click(function(){
+         $("#user_mycolle_view_<%= i %>").slideUp();
+         console.log("ddddd");
+         });
+
+      });
+
+
+   </script>
+
+      <div class="user_mycolle_wrap">
+      <div  class="user_mycolle" id="user_mycolle_<%= i %>">
+      <%= core.collection_name %>
+      <div class="user_mycolle_created_time"><%= core.created_at.strftime("%Y年%m月%d日") %></div>
+      </div>
+        <% Collectionrelation.where(:relay_user_id => @user.id , :relay_collection_title => core.collection_name).first(1).each do |mycore| %>
+      <% Get.where(:id => mycore.relay_get_post_id).first(1).each do |mycore_get| %>
+      <div class="user_mycolle_image"><%= image_tag mycore_get.getimage %></div>
+      <div class="user_mycolle_image_cover"></div>
+      <% end %>
+      <% end %>
+      </div>
+      <div class="user_mycolle_view" id="user_mycolle_view_<%= i %>">
+       <div class="header-userpage-core-sp">
+      <div class="user_mycolle_close" id="user_mycolle_close_<%= i %>"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+        <h1><%= link_to "my collection", root_path %></h1>
+      </div>
+
+<div class="mycore_get">
+
+
+<div class="s_user_mycolle_wrap">
+      <div  class="s_user_mycolle" id="user_mycolle_<%= i %>"><%= core.collection_name %></div>
+      <% Collectionrelation.where(:relay_user_id => @user.id , :relay_collection_title => core.collection_name).first(1).each do |mycore| %>
+      <% Get.where(:id => mycore.relay_get_post_id).first(1).each do |mycore_get| %>
+      <div class="s_user_mycolle_image"><%= image_tag mycore_get.getimage %></div>
+      <div class="s_user_mycolle_image_cover"></div>
+      <% end %>
+      <% end %>
+</div>
+
+<ul>
+<% Collectionrelation.where(:relay_user_id => @user.id , :relay_collection_title => core.collection_name).each do |mycore| %>
+      <% Get.where(:id => mycore.relay_get_post_id).each do |mycore_get| %>
+<li>
+
+  <div class="location_get_title"><span><%= mycore_get.title %></span></div>
+  <div class="location_get_image"><%= link_to image_tag(mycore_get.getimage),mycore_get %></div>
+
+  <div class="likedislike-location-get-sp">
+                                  <% if @user.voted_up_on? mycore_get %>
+                                      <div class="likedislike-like-location-sp">
+                                          <%= link_to like_get_path(mycore_get), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-location-sp">
+                                              <%= link_to like_get_path(mycore_get), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+                                              <% if @user.voted_down_on? mycore_get %>
+                                                  <div class="likedislike-dislike-location-sp">
+                                                      
+                                                      <%= link_to dislike_get_path(mycore_get), method: :put do %>
+                                                          <i class="fa fa-star fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-location-sp">
+                                                          
+                                                          <%= link_to dislike_get_path(mycore_get), method: :put do %>
+                                                              <i class="fa fa-star fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+  <div class="location_get_price">¥ <%= mycore_get.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></div>
+
+  </div></li>
+
+
+      <% end %>
+      <% end %>
+      </ul>
+
+      </div>
+
+      <% i +=1%></div>
+    <% end %>
+
+    </div>    
+    
+	<div class="tab-sort-li hide">
+
+<div class="like_data">
+
+<div class="mycollection_title_h3"><h3>LIKES</h3></div>
+<div class="clearfix"></div>
+
+
+ <% if @user.find_liked_items == [] %>
+  <div class="s-post-notfound">
+  いいね！がありません。
+  </div>
+  <% else %>
+  <% end %>
+  
+
+<ul>
+    <% @user.find_liked_items.each do | like_data |%>
+
+<li>
+  <div class="location_get_title"><span><%= like_data.title %></span></div>
+  <div class="location_get_image"><%= link_to image_tag(like_data.getimage), like_data %></div>
+
+  <div class="likedislike-location-get-sp">
+                                  <% if @user.voted_up_on? like_data %>
+                                      <div class="likedislike-like-location-sp">
+                                          <%= link_to like_get_path(like_data), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-location-sp">
+                                              <%= link_to like_get_path(like_data), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+          <% if like_data.get_cat == "shoping"%>
+
+                                              <% if @user.voted_down_on? like_data %>
+                                                  <div class="likedislike-dislike-location-sp">
+                                                      
+                                                      <%= link_to dislike_get_path(like_data), method: :put do %>
+                                                          <i class="fa fa-star fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-location-sp">
+                                                          
+                                                          <%= link_to dislike_get_path(like_data), method: :put do %>
+                                                              <i class="fa fa-star fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+        <% elsif like_data.get_cat == "eating"%>
+
+                                              <% if @user.voted_down_on? like_data %>
+                                                  <div class="likedislike-dislike-location-sp">
+                                                      
+                                                      <%= link_to dislike_get_path(like_data), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-location-sp">
+                                                          
+                                                          <%= link_to dislike_get_path(like_data), method: :put do %>
+                                                              <i class="fa fa-heart fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+
+
+        <%end%>
+  <div class="location_get_price">¥ <%= like_data.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></div>
+
+  </div>
+</li>
+    <% end %>
+
+
+</ul>
+</div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+	<div class="tab-sort-li hide">
+
+
+
+
+<div class="like_data">
+
+
+<div class="mycollection_title_h3"><h3>FAVORITE</h3></div>
+<div class="clearfix"></div>
+
+
+ <% if @mydislike_shoping == [] %>
+  <div class="s-post-notfound">
+  欲しい！がありません。
+  </div>
+  <% else %>
+  <% end %>
+
+<ul>
+    <% @mydislike_shoping.each do | dislike_data |%>
+
+<li>
+  <div class="location_get_title"><span><%= dislike_data.title %></span></div>
+  <div class="location_get_image"><%= link_to image_tag(dislike_data.getimage), dislike_data %></div>
+
+  <div class="likedislike-location-get-sp">
+                                  <% if @user.voted_up_on? dislike_data %>
+                                      <div class="likedislike-like-location-sp">
+                                          <%= link_to like_get_path(dislike_data), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-location-sp">
+                                              <%= link_to like_get_path(dislike_data), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+                                              <% if @user.voted_down_on? dislike_data %>
+                                                  <div class="likedislike-dislike-location-sp">
+                                                      
+                                                      <%= link_to dislike_get_path(dislike_data), method: :put do %>
+                                                          <i class="fa fa-star fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-location-sp">
+                                                          
+                                                          <%= link_to dislike_get_path(dislike_data), method: :put do %>
+                                                              <i class="fa fa-star fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+  <div class="location_get_price">¥ <%= dislike_data.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></div>
+
+  </div>
+</li>
+    <% end %>
+
+
+</ul>
+</div>
+
+
+
+
+    </div>
+
+
+
+
+
+	<div class="tab-sort-li hide">
+   
+
+
+
+
+<div class="like_data">
+
+<div class="mycollection_title_h3"><h3>EAT</h3></div>
+<div class="clearfix"></div>
+
+
+
+ <% if @mydislike_eating == [] %>
+  <div class="s-post-notfound">
+  食べたい！がありません。
+  </div>
+  <% else %>
+  <% end %>
+  
+
+<ul>
+
+
+    <% @mydislike_eating.each do | dislike_data |%>
+
+<li>
+  <div class="location_get_title"><span><%= dislike_data.title %></span></div>
+  <div class="location_get_image"><%= link_to image_tag(dislike_data.getimage), dislike_data %></div>
+
+  <div class="likedislike-location-get-sp">
+                                  <% if @user.voted_up_on? dislike_data %>
+                                      <div class="likedislike-like-location-sp">
+                                          <%= link_to like_get_path(dislike_data), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-location-sp">
+                                              <%= link_to like_get_path(dislike_data), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+                                              <% if @user.voted_down_on? dislike_data %>
+                                                  <div class="likedislike-dislike-location-sp">
+                                                      
+                                                      <%= link_to dislike_get_path(dislike_data), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-location-sp">
+                                                          
+                                                          <%= link_to dislike_get_path(dislike_data), method: :put do %>
+                                                              <i class="fa fa-heart fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+  <div class="location_get_price">¥ <%= dislike_data.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></div>
+
+  </div>
+</li>
+    <% end %>
+
+
+</ul>
+</div>
+
+
+ 
+  </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+ <head>
+
+<script>
+         $(function() {
+        $('.user-tab-button div').click(function() {
+            var index2 = $('.user-tab-button div').index(this);
+            $('.user-tab-button-contents .tab-sort-li').css('display', 'none');
+            $('.user-tab-button-contents .tab-sort-li').eq(index2).css('display', 'block');
+            $('.user-tab-button div').removeClass('sort-select-user-sp');
+            $(this).addClass('sort-select-user-sp')
+        });
+
+
+    document.getElementById("mycollection-create-button").onclick= function () {
+        $("#mycollection-create-box").show();
+      }
+
+ document.getElementById("mycollection-create-close").onclick= function () {
+  $("#mycollection-create-box").hide();
+      }
+
+
+    });
+
+</script>
+
+</head>

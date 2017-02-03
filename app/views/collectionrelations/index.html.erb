@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Collectionrelations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Detaile</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collectionrelations.each do |collectionrelation| %>
+      <tr>
+        <td><%= collectionrelation.relay_collection_title %></td>
+        <td><%= collectionrelation.relay_get_post_id %></td>
+        <td><%= link_to 'Show', collectionrelation %></td>
+        <td><%= link_to 'Edit', edit_collectionrelation_path(collectionrelation) %></td>
+        <td><%= link_to 'Destroy', collectionrelation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Collectionrelation', new_collectionrelation_path %>

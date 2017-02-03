@@ -1,3 +1,4 @@
+
 <div id="header">
   <div id="header-box">
     <% if @result %>
@@ -24,10 +25,9 @@
                     <%= @user.username %>
                     </li>
                     <li>
-					
 					<%= @user.age  %>歳
 					</li>
-                        	
+
 
                         <% if @userid == @user %>
 
@@ -35,17 +35,13 @@
 
                         	<% if @userid.follows?(@user) %>
 
-								<div id="user-follow-button">
-								<%= link_to unfollow_user_path,  :method => :put do %>
-								<% end %>
-	                  			</div>
+                                <%= link_to follow_user_path, class:"following-btn",  :method => :put, remote: :true do %><span></span>
+                                 <% end %>
                   
-                      		<% elsif %>
+                      		<% else %>
 
-	                    		<div id="user-unfollow-button">
-	                     		<%= link_to follow_user_path,  :method => :put do %>
-								<% end %>
-								</div>
+                                <%= link_to follow_user_path, class:"follow-btn",  :method => :put, remote: :true do %><span></span>
+                                 <% end %>
                         
                      		 <% end %>
 
@@ -53,7 +49,7 @@
 
                      	<ul id="user-action-data">
                      	 	<li class="user-action-data-follow">
-                     	 	<div><%= @user.followees_count %></div>
+                     	 	<div class="follow-count"><%= @user.followees_count %></div>
                      	 	</li>
                         	<li class="user-action-data-follower">
                         	<div><%= @user.followers_count %></div>
@@ -70,9 +66,10 @@
 <div id="user-wrap">
 
 <div class="user-profile-image"><img src=""></div>
-<ul>
+<ul><div class="follow-count"><%= @user.followers_count %></div>
 <li><%= @user.username %></li>
 <li><%= @userid.follows?(@user) %></li>
+<li><%= @userid.find_liked_items%></li>
 
 <li><%= link_to 'f', follow_user_path,  :method => :put%></li>
 <li><%= link_to 'u', unfollow_user_path,  :method => :put%></li>

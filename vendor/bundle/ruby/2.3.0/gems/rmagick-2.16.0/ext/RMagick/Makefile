@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /Users/216q013/.rbenv/versions/2.3.1/include/ruby-2.3.0
+topdir = /Users/216q013/.rbenv/versions/2.3.0/include/ruby-2.3.0
 hdrdir = $(topdir)
-arch_hdrdir = /Users/216q013/.rbenv/versions/2.3.1/include/ruby-2.3.0/x86_64-darwin15
+arch_hdrdir = /Users/216q013/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin16
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/216q013/.rbenv/versions/2.3.1
+prefix = $(DESTDIR)/Users/216q013/.rbenv/versions/2.3.0
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20161202-15613-kobg50
-sitelibdir = $(DESTDIR)./.gem.20161202-15613-kobg50
+sitearchdir = $(DESTDIR)./.gem.20170201-9940-1d21emd
+sitelibdir = $(DESTDIR)./.gem.20170201-9940-1d21emd
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -101,7 +101,7 @@ RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = x86_64-darwin15
+arch = x86_64-darwin16
 sitearch = $(arch)
 ruby_version = 2.3.0
 ruby = $(bindir)/$(RUBY_BASE_NAME)

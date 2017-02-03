@@ -1,4 +1,6 @@
+
 /*
+
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -12,7 +14,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'font-awesome'
+ *= require 'animate'
  */
+
+ 
+@import 'lightbox';
 
 body{
  margin:0;
@@ -20,7 +27,8 @@ body{
 }
 * {
  margin: 0 0;
- padding: 0 0;
+ padding: 0 0;-webkit-appearance: none;
+
  }
 
 a {
@@ -30,16 +38,18 @@ a {
 	width:100%;
 	height:85px;
 	background-color: #FFF;
-	border-bottom:2px solid #ECF2F3;
+	border-bottom:1px solid #ECF2F3;
 }
 #header h1 {
+	width:150px;
 	text-align: left;
-	font-size:18px;
-	line-height:4.6em;
+	font-size:22px;
+	line-height:3.8em;
 	font-weight: normal;
 	letter-spacing: 2px;
 	text-decoration: none;
 	color:#FF7D7C;
+	float:left;
 }
 
 #header h1:before {
@@ -47,7 +57,7 @@ a {
 	content: "\f0e7";
   font-family: FontAwesome;
 	color:#FF7D7C;
-	font-size:40px;
+	font-size:22px;
 	margin-right:20px;
 }
 
@@ -60,7 +70,7 @@ a {
 	color:#FF7D7C;
 }
 #header-box {
-	width:1350px;
+	width:1118px;
 	margin:0 auto;
 }
 
@@ -112,21 +122,21 @@ text-decoration: none;
 
 .top-profile-image {
 	float:right;
-	width:55px;
-	height:55px;
+	width:50px;
+	height:50px;
 	background-color:#EEE;
-	border-radius:50%;
-	margin: 0 auto;
+	border-radius:5px;
+	border:1px solid #EEE;
 	overflow:hidden;
 	position: relative;
 	z-index:2;
-	margin-top:15px;
+	margin-top:19px;
 }
 
 .top-profile-image img {
 
   width: auto;
-	height:55px;
+	height:50px;
 display: block;
 position: absolute;
   min-width: 100%;
@@ -141,16 +151,16 @@ position: absolute;
 
 
 #contents-wrap {
-	width:1350px;
+	width:1120px;
 	margin:0 auto;
 	overflow: hidden;
-	margin-top:30px;
+	position: relative;
 }
 
 #sidebar-left {
-
-	width:310px;
+	width:255px;
 	float:left;
+	overflow:hidden;
 	margin-right:15px;
 }
 #sidebar-left ul {
@@ -160,10 +170,21 @@ position: absolute;
 #login-profile-data {
 	padding-top:20px;
 	background-color: #FFF;
-	height:350px;
+	height:332px;
 	border:1px solid #ECF2F3;
 	border-radius:3px;
 	margin-bottom:20px;
+}
+
+#my-active-level {
+
+	background-color: #FFF;
+	height:418px;
+	border:1px solid #ECF2F3;
+	border-radius:3px;
+	margin-bottom:15px;
+	margin-top:15px;
+
 }
 
 #recent-like-list {
@@ -242,11 +263,14 @@ width:100px;
 	border:1px solid #ECF2F3;
 }
 
+#user-wrap-final {
+	width:627px;
+	overflow: hidden;
+}
+
 #user-wrap {
-	padding-top:80px;
-	width:1020px;
-	background-color: #FFF;
-	border:1px solid #ECF2F3;
+	padding-top:15px;
+	width:655px;
 }
 
 #user-wrap h3 {
@@ -254,6 +278,11 @@ width:100px;
 	padding-top:40px;
 	margin-left:50px;
 	color:#6e6e6e;
+}
+#user-wrap ul {
+	padding:0 0;
+	margin: 0 0;
+
 }
 #new-present-wrap {
 	width:750px;
@@ -263,28 +292,215 @@ width:100px;
 
 #mypage-following-contents-li {
 
-	width:300px;
-	height:200px;
+	width:306px;
+	height:210px;
 	margin-bottom: 20px;
-	margin-left: 15px;
+	margin-right:10px;
 	float:left;
 	border-top:1px solid #ECF2F3;
 	border-bottom:2px solid #FF7D7C;
 	border-left:1px solid #ECF2F3;
 	border-right:1px solid #ECF2F3;
+	background-color: #FFF;
 }
 
 
 
 #mypage-follower-contents-li {
-
-	width:300px;
-	height:200px;
+	width:306px;
+	height:210px;
 	margin-bottom: 20px;
-	margin-left: 15px;
+	margin-right:10px;
 	float:left;
 	border-top:1px solid #ECF2F3;
 	border-bottom:2px solid #FF7D7C;
 	border-left:1px solid #ECF2F3;
 	border-right:1px solid #ECF2F3;
+	background-color: #FFF;
+}
+
+.get-post a {
+	text-decoration: none;
+	color:#FF7D7C !important;
+	width:100px;
+	height:30px;
+	float:left;
+	border: 1px solid #FF7D7C;
+	border-radius: 5px;
+	margin-top:10px;
+	margin-left: 15px;
+	text-align: center;
+	line-height:2.8em;
+	font-size:11px;
+}
+
+.enquete-post a {
+	text-decoration: none;
+	color:#77B4BE !important;
+	width:100px;
+	height:30px;
+	float:left;
+	border: 1px solid #77B4BE;
+	border-radius: 5px;
+	margin-top:10px;
+	margin-left: 15px;
+	margin-right: 15px;
+	text-align: center;
+	line-height:2.8em;
+	font-size:11px;
+}
+
+.my-active-level-status-mylevel {
+	font-size:15px;
+	text-align:left;
+	margin-left:25px;
+	margin-top:20px;
+}
+
+.my-active-level-status-mylevel i {
+
+	font-size:35px;
+}
+
+
+.my-active-level-status-price {
+	font-size:15px;
+	text-align:center;
+	margin-top:20px;
+}
+
+.fixed{
+	position:fixed;
+	top:0px;
+}
+
+
+.fixed_2{
+	position: fixed;
+	top:0px;
+}
+
+
+#sidebar-right-mypage {
+
+	padding-bottom: 32768px;
+	margin-bottom: -32768px;
+	width:220px;
+	float:right;
+	margin-left:15px;
+	border-radius:3px;
+}
+
+.all-gets-database {
+	width:310px;
+	height:46px;
+	border-radius:5px;
+	margin-bottom:15px;
+	background-color: #FFF;
+	text-align: center;
+	line-height: 3.3em;
+}
+
+.befriends-wrap h4 {
+	color:#aaa;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+.befriends {
+	width:280px;
+	height:57px;
+	margin-bottom:15px;
+	color:#666;
+	float:left;
+	background-color: #ECF1F3;
+	position: relative;
+	border-radius: 5px;
+}
+
+.befriends-avatar {
+	
+	width:40px;
+	height:40px;
+	background-color:#EEE;
+	border-radius:5px;
+	border:1px solid #EEE;
+	float:left;
+	overflow:hidden;
+	position:relative;
+	z-index:2;
+	margin-right: 10px;
+}
+
+
+.befriends-avatar img{
+	
+  	width: auto;
+	height:40px;
+display: block;
+position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+     -moz-transform: translate3d(-50%, -50%, 0);
+           -ms-transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
+}
+.befrieneds-username {
+	height:10px;
+	font-weight: bold;
+	color: #666;
+	font-size:11px;
+	margin-top: 3px;
+}
+.befriends-followees {
+	position: absolute;
+	bottom:0;
+	left:67px;
+	float: left;
+}
+.befriends-followees_count {
+	color:#CBCBCB;
+	font-size:11px;
+	position: relative;
+	top:3px;
+	width: 55px;
+	text-align: center;
+}
+.befriends-followees:after {
+	content:"FOLLOWING";
+	color:#CBCBCB;
+	font-size:9px;
+
+}
+.befriends-followers {
+	float: left;
+	position: absolute;
+	bottom:0;
+	left:147px;
+}
+.befriends-followers_count {
+	color:#CBCBCB;
+	font-size:11px;
+	width: 52px;
+	position: relative;
+	top:3px;
+	text-align: center;
+}
+
+.befriends-followers:after {
+	content:"FOLLOWER";
+	color:#CBCBCB;
+	font-size:9px;
+
+}
+
+
+.sub-form-title {
+	position: relative;
+	top:17px;
+	margin-left:113px;
+	color:#bbb;
+	font-size:12px;
 }

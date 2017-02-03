@@ -1,0 +1,53 @@
+
+<% title @get.title %>
+
+<div id="header-sp">
+  <div id="header-box">
+    <% if @result %>
+         <div class="top-profile-image">
+            <%= link_to image_tag(current_user.avatar.url), user_registration_path %>
+         </div>
+    <% elsif %>
+    <div class="login-head"><%= link_to "login", new_user_session_path%></div>
+    <% end %>
+
+<div class="header-userpage-sp-top">
+<div class="reload-button-sp"><%= link_to root_path do %><i class="fa fa-chevron-left" aria-hidden="true"></i><% end %></div>
+    <h1><%= link_to "pie", root_path %></h1>
+    </div>
+  </div>
+</div>
+
+<% if @get.location_check == true %>
+
+<iframe width="980" height="700" frameborder="0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDHn2GGbcZ3IMkjkp7H7vTPNA3o8oaIkzE&origin=<%=  current_user.latitude%>,<%= current_user.longitude%>
+  &destination=<%= @get.latitude%>,<%= @get.longitude%>&key=AIzaSyDHn2GGbcZ3IMkjkp7H7vTPNA3o8oaIkzE">
+</iframe>
+<% else %>
+
+	<div class="location_check_notfound">位置情報は登録されていません。</div>
+
+<% end %>
+
+
+<div class="single_contents">
+
+
+<h2><%= @get.title %></h2>
+
+
+<div class="single_image_get">
+<%= link_to image_tag(@get.getimage.url ),@get.getimage.url, :rel => "lightbox" %>
+</div>
+
+
+
+<div class="single_price">¥ <%= @get.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></div>
+
+
+<div class="single_body"><%= @get.body %></div>
+
+
+<div class="navi-map"><a target=”_blank” href="https://www.google.co.jp/maps/dir/<%=  current_user.latitude%>,<%= current_user.longitude%>/<%= @get.latitude%>,<%= @get.longitude%>">GoogleMapで開く</a></div>
+
+</div>

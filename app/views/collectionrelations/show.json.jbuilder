@@ -1,0 +1,1 @@
+json.partial! "collectionrelations/collectionrelation", collectionrelation: @collectionrelation

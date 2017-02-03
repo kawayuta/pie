@@ -1,5 +1,3 @@
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div id="header">
   <div id="header-box">
     <% if @result %>
@@ -9,130 +7,264 @@
     <% elsif %>
     <div class="login-head"><%= link_to "login", new_user_session_path%></div>
     <% end %>
-    <h1><%= link_to "Prres", root_path %></h1>
+    <h1><%= link_to "Shopie", root_path %></h1>
   </div>
 </div>
 
-<div id="present-data-wrap">
+
+<div id="present-data-wrap" class="clearfix">
 
 
-<div id="present-data">
+<div id="present-data-wrap-left-contents">
 
-<div class="present-data-image"><%= image_tag(@present.image) %></div>
-
-<div class="likedislike-show">
-<h2>アンケート内容</h2>
-
-<% if current_user.voted_up_on? @present %>
-
-<div class="likedislike-show-like">
-<%= link_to like_present_path(@present), method: :put do %>
-<i class="fa fa-thumbs-o-up fa-2x"></i>
-<% end %>
-<span class="like-count"><%= @present.get_likes.size%></span>
-</div>
-
-<% elsif %>
-
-<div class="likedislike-show-nolike">
-<%= link_to like_present_path(@present), method: :put do %>
-<i class="fa fa-thumbs-o-up fa-2x"></i>
-<% end %>
-<span class="nolike-count"><%= @present.get_likes.size%></span>
-</div>
-
-<% end %>
+  <div class="present-data-image"><%= image_tag(@present.image) %></div>
 
 
+  <div class="present-data-about-sub">
 
-<% if current_user.voted_down_on? @present %>
+            <p>
+              <div class="title-show">
+              <div class="title-show-data">
+              <h2><%= @present.title %></h2>
+              </div>
+              </div>
+            </p>
 
-<div class="likedislike-show-dislike">
-<span class="dislike-count"><%= @present.get_dislikes.size %></span>
-<%= link_to dislike_present_path(@present), method: :put do %>
-<i class="fa fa-thumbs-o-down fa-2x"></i>
-<% end %>
-</div>
-
-<% elsif %>
-
-<div class="likedislike-show-nodislike">
-<span class="nodislike-count"><%= @present.get_dislikes.size %></span>
-<%= link_to dislike_present_path(@present), method: :put do %>
-<i class="fa fa-thumbs-o-down fa-2x"></i>
-<% end %>
-</div>
-
-<% end %>
-
-<h4>このプレゼントを良いと思ってる人の年齢層</h4>
-<% @present.votes_for.up.by_type(User).voters.first(8).each do |like_age_data| %>
-<%= like_age_data.age %> 歳
-<% end %>
-<h4>このプレゼントを良くないと思ってる人の年齢層</h4>
-<% @present.votes_for.down.by_type(User).voters.first(8).each do |dislike_age_data| %>
-<%= dislike_age_data.age %> 歳
-<% end %>
-
-</div>
-
-<div class="present-data-about">
-
-<p>
-  <div class="brand-show">
-  <div class="brand-show-title">ブランド</div>
-  <div class="brand-show-data"><%= @present.brand %></div>
+              <p>
+              <div class="enquete-show">
+              <div class="enquete-show-data">
+              <p><%= @present.enquete %></p>
+              </div>
+              </div>
+            </p>
+  
   </div>
-</p>
 
 
-<p>
-  <div class="price-show">
-  <div class="price-show-title">購入価格</div>
-  <div class="price-show-data"><%= @present.price %> 円</div>
+    <div class="present-data-about">
+
+      <p>
+        <div class="brand-show present-data-about-box">
+        <div class="brand-show-title">販売元</div>
+        <div class="brand-show-data"><%= @present.brand %></div>
+        </div>
+      </p>
+
+
+      <p>
+        <div class="price-show present-data-about-box">
+        <div class="price-show-title">購入価格</div>
+        <div class="price-show-data"><%= @present.price %> 円</div>
+        </div>
+      </p>
+
+
+
+      <p>
+        <div class="cat-show present-data-about-box">
+        <div class="cat-show-title">カテゴリ</div>
+        <div class="cat-show-data"><%= @present.cat %></div>
+        </div>
+      </p>
+
+      <p>
+        <div class="youage-show present-data-about-box">
+        <div class="youage-show-title">贈る相手の年齢</div>
+        <div class="youage-show-data"><%= @present.youage %> 歳</div>
+        </div>
+      </p>
+      <p>
+        <div class="youage-show present-data-about-box">
+        <div class="youage-show-title">贈る相手の性別</div>
+        <div class="youage-show-data"><%= @present.man %></div>
+        </div>
+      </p>
+      <p>
+
+      <p>
+      <div class="pay-show">
+        <div class="pay-show-amazon">
+        <div class="pay-show-amazon_icon"></div>
+        <div class="pay-show-amazon_price">10000円</div>
+        </div>
+      </div>
+      </p>
+
+</div>
+
+
+
+</div>
+
+<div id="present-data-wrap-right-contents">
+
+      <div class="bar_chart_contents"><%= column_chart @chart_all_data, colors: ["#FF7D7C"],height:"330px", width:"980px",stacked: true,library: {
+                vAxis: {
+                  textStyle: {
+                    fontSize: 9
+                    },
+                  gridlines: {
+                    color: "#eeeeee"
+                  }
+                },
+                hAxis: {
+                  textStyle: {
+                    fontSize: 9
+                    }
+                  }
+                  } 
+      %></div> 
+
+
+
+<div id="poll_button">
+          <ul>
+
+          <% @present_id = params[:id] %>
+          <% @user_id = current_user.id%>
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @user_id, @present_id, 1])%>
+           
+              <%= link_to poll_first_present_path(@present), method: :put do %>
+              <li class="poll_1_checked">最高！_true <%= @poll_1%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_first_present_path(@present), method: :put do %>
+              <li class="poll_1">最高！ <%= @poll_1%></li>
+              <% end %>
+
+          <% end %>
+
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @user_id, @present_id, 2])%>
+           
+              <%= link_to poll_second_present_path(@present), method: :put do %>
+              <li class="poll_2_checked">いいね_true <%= @poll_2%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_second_present_path(@present), method: :put do %>
+              <li class="poll_2">いいね <%= @poll_2 %></li>
+              <% end %>
+
+          <% end %>
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @user_id, @present_id,3])%>
+           
+              <%= link_to poll_third_present_path(@present), method: :put do %>
+              <li class="poll_3_checked">まぁまぁ_true  <%= @poll_3%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_third_present_path(@present), method: :put do %>
+              <li class="poll_3">まぁまぁ <%= @poll_3%></li>
+              <% end %>
+
+          <% end %>
+
+          <% if Poll.find_by(["user_id = ? and present_id = ? and poll_id = ?", @user_id, @present_id, 4])%>
+           
+              <%= link_to poll_four_present_path(@present), method: :put do %>
+              <li class="poll_4_checked">うーん..._true <%= @poll_4%></li>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to poll_four_present_path(@present), method: :put do %>
+              <li class="poll_4">うーん... <%= @poll_4%></li>
+              <% end %>
+
+          <% end %>
+          </ul>
+    </div>
+
+
+<div class="chart_ul">
+  <div class="chart_li">
+  <h4>10代</h4>
+  <% if @poll_10_19_check > 0 %>
+  <div class="pie_chart_fix"><%= pie_chart @chart_data_10,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
   </div>
-</p>
 
+  <div class="chart_li">
+  <h4>20代</h4>
+  <% if @poll_20_29_check > 0 %>
+   <div class="pie_chart_fix"><%= pie_chart @chart_data_20,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
+  </div>
 
-<p>
-  <div class="price-show">
-  <div class="price-show-title">Amazon価格</div>
-  <div class="price-show-data"><%=  %> 円</div>
+  <div class="chart_li">
+  <h4>30代</h4>
+  <% if @poll_30_39_check > 0 %>
+   <div class="pie_chart_fix"><%= pie_chart @chart_data_30,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
   </div>
-</p>
 
-<p>
-  <div class="price-show">
-  <div class="price-show-title">楽天価格</div>
-  <div class="price-show-data"><%=  %> 円</div>
+  <div class="chart_li">
+  <h4>40代</h4>
+  <% if @poll_40_49_check > 0 %>
+   <div class="pie_chart_fix"><%= pie_chart @chart_data_40,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
   </div>
-</p>
 
-<p>
-  <div class="cat-show">
-  <div class="cat-show-title">カテゴリ</div>
-  <div class="cat-show-data"><%= @present.cat %></div>
+  <div class="chart_li">
+  <h4>50代</h4>
+  <% if @poll_50_59_check > 0 %>
+   <div class="pie_chart_fix"><%= pie_chart @chart_data_50,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
   </div>
-</p>
 
-<p>
-  <div class="youage-show">
-  <div class="youage-show-title">贈る相手の年齢</div>
-  <div class="youage-show-data"><%= @present.youage %> 歳</div>
+  <div class="chart_li">
+  <h4>60代</h4>
+  <% if @poll_60_69_check > 0 %>
+   <div class="pie_chart_fix"><%= pie_chart @chart_data_60,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
   </div>
-</p>
-<p>
-  <div class="youage-show">
-  <div class="youage-show-title">贈る相手の性別</div>
-  <div class="youage-show-data"><%= @present.man %></div>
+
+  <div class="chart_li">
+  <h4>70代</h4>
+  <% if @poll_70_79_check > 0 %>
+   <div class="pie_chart_fix"><%= pie_chart @chart_data_70,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
   </div>
-</p>
+
+  <div class="chart_li">
+  <h4>80代</h4>
+  <% if @poll_80_89_check > 0 %>
+  <div class="pie_chart_fix"><%= pie_chart @chart_data_80,  donut: true, height: "210px",width: "210px;",  legend: 'none' %></div>
+  <% else %>
+  <p>0%</p>
+  <span>未投票</span>
+  <% end %>
+  </div>
+  </div>
 
 
 </div>
 </div>
-
-</div>
-<%= link_to 'Edit', edit_present_path(@present) %> |
-<%= link_to 'Destroy', @present, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', presents_path %>

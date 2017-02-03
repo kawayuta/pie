@@ -1,0 +1,1 @@
+json.array! @collectionrelations, partial: 'collectionrelations/collectionrelation', as: :collectionrelation

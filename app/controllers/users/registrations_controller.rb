@@ -2,6 +2,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
+def create
+    super # this calls Devise::RegistrationsController#create as usual
+    # after creating a new user, create a profile that has
+    # the profile.user_id field set to the user_id of the user jsut created
+    if resource.save
+        @datatime = DateTime.now.strftime("%Y%m%d")
+  @user = current_user
+  @user.age =  (@datatime.to_i - @user.birthday.strftime("%Y%m%d").to_i) / 10000
+  @user.save
+    end
+  end
+    
   # GET /resource/sign_up
   # def new
   #   super
@@ -57,4 +69,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+   protected
+  def update_resource(resource, params)
+   resource.update_without_current_password(params)
+  end
+
 end

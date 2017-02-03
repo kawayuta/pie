@@ -1,0 +1,74 @@
+
+  <head>
+  <script type="text/javascript">
+    
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 60000,
+    maximumAge: 0
+  };
+  window.navigator.geolocation.getCurrentPosition(success, error, options);
+
+function success(pos) {
+  console.log(pos.coords.latitude)
+  document.getElementById('location_latitude_user').value = pos.coords.latitude;
+  document.getElementById('location_longitude_user').value = pos.coords.longitude;
+
+}
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+
+
+  </script>
+  </head>
+<div class="body-welcome-sp">
+
+<div class="pie-letter">
+<h1>pie</h1>
+</div>
+<div class="main-welcome-sp">
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    
+  <div class="field-welcome-sp">
+
+    <%= f.text_field :username, autofocus: true, placeholder:"ユーザーネーム" %>
+  </div>
+
+  <div class="field-welcome-sp">
+      <%= f.date_select :birthday,start_year: Date.today.year,end_year: Date.today.year - 70, autofocus: true %>
+  </div>
+
+
+  <div class="field-welcome-sp">
+    <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+  </div>
+
+  <div class="field-welcome-sp">
+    <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード(#{@minimum_password_length}文字以上)" %>
+  </div>
+
+  <div class="field-welcome-sp">
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードの確認" %> 
+  </div>
+
+    <%= f.hidden_field :latitude, :id=>"location_latitude_user" %>
+    <%= f.hidden_field :longitude, :id=>"location_longitude_user" %>
+
+  <div class="reverse-top-button-sp">
+  <%= link_to "戻る", root_path%>
+  </div>
+  
+
+  <div class="actions-welcome-sp">
+    <%= f.submit "サインアップ" %>
+  </div>
+<% end %>
+
+  </div>
+  </div>
+

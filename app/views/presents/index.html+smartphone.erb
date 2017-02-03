@@ -1,0 +1,474 @@
+
+
+<% if @result %>
+
+<div id="header-sp">
+<style>body {background-color:#fcfcfc !important;</style>
+  <%if @result%>
+    <%= form_for(@usernew, as: @usernew, url: registration_path(@usernew), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :latitude, :id=>"location_latitude_user" %>
+    <%= f.hidden_field :longitude, :id=>"location_longitude_user" %>
+
+  <div class="reload-button-sp"> 
+    <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %>
+    <i class="fa fa-refresh fa-5x" aria-hidden="true"></i>
+  <% end %>
+  </div>
+  <div class="mypage-button"><%= link_to user_registration_path do %><i class="fa fa-user" aria-hidden="true"></i><% end %></div>
+  <h1>pie</h1>
+  <% end %>
+
+<% else %>
+  <h2>pie</h2>
+
+  <%end%>
+
+  </div>
+
+<head>
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<script>
+         $(function() {
+        $('.main-tab-button div').click(function() {
+            var index2 = $('.main-tab-button div').index(this);
+            $('.main-tab-button-contents .tab-sort-li').css('display', 'none');
+            $('.main-tab-button-contents .tab-sort-li').eq(index2).css('display', 'block');
+            $('.main-tab-button div').removeClass('sort-select-sp');
+            $(this).addClass('sort-select-sp')
+        });
+    });
+
+         $(function() {
+        $('.pieloca div').click(function() {
+            var index2 = $('.pieloca  div').index(this);
+            $('.pieloca-contents .tab-sort-p-li').css('display', 'none');
+            $('.pieloca-contents .tab-sort-p-li').eq(index2).css('display', 'block');
+            $('.pieloca  div').removeClass('sort-select-p-sp');
+            $(this).addClass('sort-select-p-sp')
+        });
+    });
+
+
+        jQuery(function($){
+            $(function(){
+              $('.colorGroup').on('click', function() {
+                if ($(this).prop('checked')){
+                    // 一旦全てをクリアして再チェックする
+                    $('.colorGroup').prop('checked', false);
+                    $(this).prop('checked', true);
+                }
+              });
+            });
+        });
+
+window.onload = function () {
+
+   document.getElementById("uploadBtn").onchange = function () {
+       var reader  = new FileReader();
+
+reader.addEventListener('load', function(e) {
+      document.getElementById("uploadFile_preview").setAttribute("src",e.target.result);
+});
+
+reader.readAsDataURL(this.files[0]);
+
+      $('.slideDown').slideDown();
+   }
+
+   document.getElementById("close-slide").onclick= function () {
+
+  $('.slideDown').slideUp();
+   }
+
+
+
+PullToRefresh.init({
+  mainElement: '.timeline-left-position-sp ul',
+  onRefresh: function(){ window.location.reload(); }
+});
+
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 60000,
+    maximumAge: 0
+  };
+  window.navigator.geolocation.getCurrentPosition(success, error, options);
+
+function success(pos) {
+  console.log(pos.coords.latitude)
+  document.getElementById('location_latitude').value = pos.coords.latitude;
+  document.getElementById('location_longitude').value = pos.coords.longitude;
+  document.getElementById('location_latitude_user').value = pos.coords.latitude;
+  document.getElementById('location_longitude_user').value = pos.coords.longitude;
+
+}
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+
+ var element = document.getElementById('location_chkbox').style.display='none';
+}
+}
+
+
+$(document).on('ready turbolinks:load',function() {
+  return $("select").change(function() {
+    return $(this).closest("form").submit();
+  });
+});
+
+
+</script>
+
+</head>
+
+
+<div class="main-tab-button clearfix">
+	<div class="tl-main-tab-button sort-select-sp">タイムライン</div>
+	<div class="geo-main-tab-button">付近を調べる</div>
+</div>
+
+	<div class="main-tab-button-contents">
+		<div class="tab-sort-li show">
+
+            <ul class="content">
+
+                  <li class="show">
+<div id="main-contents-wrap-sp" class="clearfix">
+
+	<div  id="posts" class="timeline-left-position-sp">
+
+
+
+  <ul class="page">
+
+  <%= render 'timeline_sp' %>
+  </ul>
+  <%= paginate @eee %>
+  </div>
+		  </div>  </div>
+
+	<div class="tab-sort-li hide">
+
+
+
+<div class="pieloca">
+<div class="sort-select-p-sp"><i class="fa fa-cutlery fa-2x"></i></div>
+<div><i class="fa fa-shopping-bag fa-2x"></i></div>
+<div><i class="fa fa-street-view fa-2x""></i></div>
+</div>
+<div class="clearfix"></div>
+
+<div class="pieloca-contents">
+  <div class="tab-sort-p-li show">
+
+
+<div class="location_get">
+<!--<div class="tab-about-get">
+今、近くで食べられるもの
+</div> -->
+
+
+ <% if @eat_places == [] %>
+  <div class="s-post-notfound">
+  食べ物が見つかりませんでした。
+  </div>
+  <% else %>
+  <% end %>
+
+<ul>
+  <% @eat_places.each do |aaaaa|%>
+  <li>
+  <div class="location_get_title"><span><%= aaaaa.title %></span></div>
+  <div class="location_get_image"><%= link_to image_tag(aaaaa.getimage),aaaaa  %></div>
+
+  <div class="likedislike-location-get-sp">
+                                  <% if current_user.voted_up_on? aaaaa %>
+                                      <div class="likedislike-like-location-sp">
+                                          <%= link_to like_get_path(aaaaa), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-location-sp">
+                                              <%= link_to like_get_path(aaaaa), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? aaaaa %>
+                                                  <div class="likedislike-dislike-location-sp">
+                                                      
+                                                      <%= link_to dislike_get_path(aaaaa), method: :put do %>
+                                                          <i class="fa fa-star fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-location-sp">
+                                                          
+                                                          <%= link_to dislike_get_path(aaaaa), method: :put do %>
+                                                              <i class="fa fa-star fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+  <div class="location_get_price">¥ <%= aaaaa.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></div>
+
+  </div>
+
+
+  </li>
+  <% end %>
+</ul>
+
+</div></div>
+
+
+
+  <div class="tab-sort-p-li hide">
+
+<div class="location_get">
+
+<!-- <div class="tab-about-get">
+今、近くに売っているもの
+</div> -->
+
+ <% if @places == [] %>
+  <div class="s-post-notfound">
+  商品が見つかりませんでした。
+  </div>
+  <% else %>
+  <% end %>
+<ul>
+  <% @places.each do |aaaaa|%>
+  <li>
+  <div class="location_get_title"><span><%= aaaaa.title %></span></div>
+  <div class="location_get_image"><%= link_to image_tag(aaaaa.getimage),aaaaa  %></div>
+
+  <div class="likedislike-location-get-sp">
+                                  <% if current_user.voted_up_on? aaaaa %>
+                                      <div class="likedislike-like-location-sp">
+                                          <%= link_to like_get_path(aaaaa), method: :put do %>
+                                              <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                              <% end %>
+                                      </div>
+                                      <% elsif %>
+                                          <div class="likedislike-nolike-location-sp">
+                                              <%= link_to like_get_path(aaaaa), method: :put do %>
+                                                  <i class="fa fa-thumbs-o-up fa-2x"></i>
+                                                  <% end %>
+                                          </div>
+                                          <% end %>
+                                              <% if current_user.voted_down_on? aaaaa %>
+                                                  <div class="likedislike-dislike-location-sp">
+                                                      
+                                                      <%= link_to dislike_get_path(aaaaa), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-location-sp">
+                                                          
+                                                          <%= link_to dislike_get_path(aaaaa), method: :put do %>
+                                                              <i class="fa fa-heart fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+  <div class="location_get_price">¥ <%= aaaaa.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></div>
+
+  </div>
+
+
+  </li>
+  <% end %>
+</ul>
+
+</div>
+</div>
+
+  <div class="tab-sort-p-li hide">
+
+  <div class="location_friends">
+
+<!-- <div class="tab-about-get">
+今、近くに居る人
+</div> -->
+
+ <% if @eat_places == [] %>
+  <div class="s-post-notfound">
+  近くの人が見つかりませんでした。
+  </div>
+  <% else %>
+  <% end %>
+
+      <ul>
+
+        <% @friends_places.each do |user| %>
+
+        <%= link_to user do%><li>
+          <div class="friends_places_profile_wrap">
+        <div class="location_friends_avatar"><%= image_tag user.avatar %></div>
+        <div class="location_friends_username"><%= user.username %></div>
+        </div>
+          <% @user_get_friend = Get.where(:created_by => user)%>
+
+ <% if @user_get_friend == [] %>
+    <div class="clearfix"></div>
+  <div class="s-user-notfound">
+  投稿がありません。
+  </div>
+  <% else %>
+  <% end %>
+
+          <% @user_get_friend.first(3).each do |a| %>
+
+          <% if @user_get_friend.count == 1%>
+          <div class="user_get_friend_image_1"><%= image_tag a.getimage %></div>
+          <% elsif @user_get_friend.count == 2 %>
+          <div class="user_get_friend_image_2"><%= image_tag a.getimage %></div>
+          <% else %>
+          <div class="user_get_friend_image_3"><%= image_tag a.getimage %></div>
+          <% end %>
+
+        <% end %>
+          
+        </li><% end %>
+        <% end %>
+      </ul>
+
+    </div> 
+
+    </div>
+</div>
+
+
+</div>
+
+	</div>
+
+	</div>
+
+
+
+</div>
+<div class="foosssster">
+
+
+  <%= form_for(@get) do |f|  %>
+
+    <% if @get.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(get.errors.count, "error") %> prohibited this get from being saved:</h2>
+        <ul>
+        <% @get.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field_posting_get">
+
+    <div class="fileUpload-sp btn btn-primary">
+        <input id="uploadBtn" type="file" class="upload"  name="get[getimage]" placeholder="ddd">
+        <label><i class="fa fa-paint-brush" aria-hidden="true"></i></label>
+    </div>
+     
+
+<div class="slideDown" style="display: none;">
+
+
+       <div class="header-userpage-core-sp">
+      <div class="user_mycolle_close" id="close-slide"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+        <h1><%= link_to "新しい投稿", root_path %></h1>
+      </div>
+
+
+
+     <div id="preview"><img id="uploadFile_preview"></div>
+
+
+
+<div class="chkbox">
+  <input type="checkbox" name="get[get_cat]" id="chkbox1" value="shoping" class="colorGroup">
+  <label for="chkbox1">買い物</label>
+</div>
+
+<div class="chkbox">
+  <input type="checkbox" name="get[get_cat]" id="chkbox2" value="eating" class="colorGroup">
+  <label for="chkbox2">食べ物</label>
+</div>
+
+  <div class="field_get_title-sp">
+    <%= f.text_field :title, :placeholder=> "購入品の名前を入力" %>
+  </div>
+
+
+
+
+  <div class="field_get_price-sp">
+    <%= f.number_field :price, :placeholder=> "購入品の価格" %>
+  </div>
+
+  <div class="field_get_body-sp">
+    <%= f.text_area :body, :placeholder=> "ひとこと" %>
+  </div>
+      
+  <div class="field_get_image-sp">
+    <%= f.file_field :getimage %>
+    <%= f.hidden_field :getimage_cache %>
+  </div>
+
+    <%= f.hidden_field :latitude, :id=>"location_latitude" %>
+    <%= f.hidden_field :longitude, :id=>"location_longitude" %>
+
+
+<div id="location_chkbox">
+<%= f.check_box :location_check, {:checked => true}, true, false %>
+<label for="get_location_check"></label>
+
+</div>
+  <div class="actions_get_image-sp">
+    <%= f.submit "投稿" %>
+
+  </div>
+
+</div>
+  </div>
+<% end %>
+
+</div>
+  <% else %>
+  <div class="body-welcome-sp-top">
+
+<div class="pie-letter">
+<h1>pie</h1>
+
+<span>
+
+近くの人や友達と「食べた！買った！」を共有できる<br />
+ソーシャル・ネットワーク・サービス
+<br /><br />
+「こういうの買ったんだ！」「いいね！私もそれ欲しい！」<br />
+「今日は何を食べているんだろう？買ったのかな？」<br />
+「この付近で買えるもの・食べられるものってなんだろう？」<br /><br />
+pieをはじめよう
+</span>
+
+</div>
+
+<div class="top-login-register-button">
+<ul>
+<li><%= link_to "Login", new_user_session_path%></li>
+<li><%= link_to "Register", new_user_registration_path%></li>
+</ul>
+</div>
+
+</div>
+
+    <% end%>
+
+
+

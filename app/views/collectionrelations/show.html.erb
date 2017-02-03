@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @collectionrelation.relay_collection_title %>
+</p>
+
+<p>
+  <strong>Detaile:</strong>
+  <%= @collectionrelation.relay_get_post_id %>
+</p>
+
+<%= link_to 'Edit', edit_collectionrelation_path(@collectionrelation) %> |
+<%= link_to 'Back', collectionrelations_path %>

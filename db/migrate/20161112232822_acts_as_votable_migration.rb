@@ -5,11 +5,11 @@ class ActsAsVotableMigration < ActiveRecord::Migration
       t.references :votable, :polymorphic => true
       t.references :voter, :polymorphic => true
 
-      t.boolean :vote_flag
+      t.boolean :vote_flag, default: false, null: false
       t.string :vote_scope
       t.integer :vote_weight
 
-      add_column :presents, :cached_votes_total, :integer, :default => 0
+    add_column :presents, :cached_votes_total, :integer, :default => 0
     add_column :presents, :cached_votes_score, :integer, :default => 0
     add_column :presents, :cached_votes_up, :integer, :default => 0
     add_column :presents, :cached_votes_down, :integer, :default => 0
@@ -45,5 +45,6 @@ class ActsAsVotableMigration < ActiveRecord::Migration
     remove_column :presents, :cached_weighted_score
     remove_column :presents, :cached_weighted_total
     remove_column :presents, :cached_weighted_average
+
   end
 end

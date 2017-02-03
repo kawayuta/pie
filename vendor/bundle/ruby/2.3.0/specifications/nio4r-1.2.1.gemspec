@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
   s.files = ["ext/nio4r/extconf.rb".freeze]
   s.homepage = "https://github.com/celluloid/nio4r".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "2.6.4".freeze
+  s.rubygems_version = "2.6.10".freeze
   s.summary = "NIO provides a high performance selector API for monitoring IO objects".freeze
 
-  s.installed_by_version = "2.6.4" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.6.10" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

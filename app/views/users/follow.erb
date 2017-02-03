@@ -1,0 +1,263 @@
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn').removeClass("unfollow");
+	$('.follow-btn').addClass("follow");
+	<% else %>	
+	$('.follow-btn').removeClass("follow");
+	$('.follow-btn').addClass("unfollow");
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn').removeClass("unfollow");
+	$('.following-btn').addClass("follow");
+	<% else %>	
+	$('.following-btn').removeClass("follow");
+	$('.following-btn').addClass("unfollow");
+	<% end %>
+
+	
+
+	$('.follow-btn-0').click(function () {
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-0').removeClass("follow-0");
+	$('.follow-btn-0').addClass("unfollow-0");
+	<% else %>	
+	$('.follow-btn-0').removeClass("unfollow-0");
+	$('.follow-btn-0').addClass("follow-0");
+	<% end %>
+	});
+
+	$('.following-btn-0').click(function () {
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-0').removeClass("unfollow-0");
+	$('.following-btn-0').addClass("follow-0");
+	<% else %>	
+	$('.following-btn-0').removeClass("follow-0");
+	$('.following-btn-0').addClass("unfollow-0");
+	<% end %>
+	});
+
+	$('.follow-btn-1').click(function () {
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-1').removeClass("unfollow-1");
+	$('.follow-btn-1').addClass("follow-1");
+	
+	<% else %>	
+	$('.follow-btn-1').removeClass("follow-1");
+	$('.follow-btn-1').addClass("unfollow-1");
+	<% end %>
+	});
+	
+	$('.following-btn-1').click(function () {
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-1').removeClass("unfollow-1");
+	$('.following-btn-1').addClass("follow-1");
+	<% else %>	
+	$('.following-btn-1').removeClass("follow-1");
+	$('.following-btn-1').addClass("unfollow-1");
+	<% end %>
+	});
+	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-2').click(function () {
+	$('.follow-btn-2').removeClass("unfollow-2");
+	$('.follow-btn-2').addClass("follow-2");
+	});
+	<% else %>	
+	$('.follow-btn-2').click(function () {
+	$('.follow-btn-2').removeClass("follow-2");
+	$('.follow-btn-2').addClass("unfollow-2");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-2').click(function () {
+	$('.following-btn-2').removeClass("unfollow-2");
+	$('.following-btn-2').addClass("follow-2");
+	});
+	<% else %>	
+	$('.following-btn-2').click(function () {
+	$('.following-btn-2').removeClass("follow-2");
+	$('.following-btn-2').addClass("unfollow-2");
+	});
+	<% end %>	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-3').click(function () {
+	$('.follow-btn-3').removeClass("unfollow-3");
+	$('.follow-btn-3').addClass("follow-3");
+	});
+	<% else %>	
+	$('.follow-btn-3').click(function () {
+	$('.follow-btn-3').removeClass("follow-3");
+	$('.follow-btn-3').addClass("unfollow-3");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-3').click(function () {
+	$('.following-btn-3').removeClass("unfollow-3");
+	$('.following-btn-3').addClass("follow-3");
+	});
+	<% else %>	
+	$('.following-btn-3').click(function () {
+	$('.following-btn-3').removeClass("follow-3");
+	$('.following-btn-3').addClass("unfollow-3");
+	});
+	<% end %>	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-4').removeClass("unfollow-4");
+	$('.follow-btn-4').addClass("follow-4");
+	});
+	<% else %>
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-4').removeClass("follow-4");
+	$('.follow-btn-4').addClass("unfollow-4");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-4').click(function () {
+	$('.following-btn-4').removeClass("unfollow-4");
+	$('.following-btn-4').addClass("follow-4");
+	});
+	<% else %>	
+	$('.following-btn-4').click(function () {
+	$('.following-btn-4').removeClass("follow-4");
+	$('.following-btn-4').addClass("unfollow-4");
+	});
+	<% end %>	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-5').removeClass("unfollow-5");
+	$('.follow-btn-5').addClass("follow-5");
+	});
+	<% else %>	
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-5').removeClass("follow-5");
+	$('.follow-btn-5').addClass("unfollow-5");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-5').click(function () {
+	$('.following-btn-5').removeClass("unfollow-5");
+	$('.following-btn-5').addClass("follow-5");
+	});
+	<% else %>	
+	$('.following-btn-5').click(function () {
+	$('.following-btn-5').removeClass("follow-5");
+	$('.following-btn-5').addClass("unfollow-5");
+	});
+	<% end %>
+
+	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-6').removeClass("unfollow-6");
+	$('.follow-btn-6').addClass("follow-6");
+	});
+	<% else %>	
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-6').removeClass("follow-6");
+	$('.follow-btn-6').addClass("unfollow-6");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-6').click(function () {
+	$('.following-btn-6').removeClass("unfollow-6");
+	$('.following-btn-6').addClass("follow-6");
+	});
+	<% else %>	
+	$('.following-btn-6').click(function () {
+	$('.following-btn-6').removeClass("follow-6");
+	$('.following-btn-6').addClass("unfollow-6");
+	});
+	<% end %>	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-7').removeClass("unfollow-7");
+	$('.follow-btn-7').addClass("follow-7");
+	});
+	<% else %>	
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-7').removeClass("follow-7");
+	$('.follow-btn-7').addClass("unfollow-7");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-7').click(function () {
+	$('.following-btn-7').removeClass("unfollow-7");
+	$('.following-btn-7').addClass("follow-7");
+	});
+	<% else %>	
+	$('.following-btn-7').click(function () {
+	$('.following-btn-7').removeClass("follow-7");
+	$('.following-btn-7').addClass("unfollow-7");
+	});
+	<% end %>	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-8').removeClass("unfollow-8");
+	$('.follow-btn-8').addClass("follow-8");
+	});
+	<% else %>	
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-8').removeClass("follow-8");
+	$('.follow-btn-8').addClass("unfollow-8");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-8').click(function () {
+	$('.following-btn-8').removeClass("unfollow-8");
+	$('.following-btn-8').addClass("follow-8");
+	});
+	<% else %>	
+	$('.following-btn-8').click(function () {
+	$('.following-btn-8').removeClass("follow-8");
+	$('.following-btn-8').addClass("unfollow-8");
+	});
+	<% end %>	
+
+	<% if current_user.follows?(@user) %> 
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-9').removeClass("unfollow-9");
+	$('.follow-btn-9').addClass("follow-9");
+	});
+	<% else %>
+	$('.follow-btn-1').click(function () {
+	$('.follow-btn-9').removeClass("follow-9");
+	$('.follow-btn-9').addClass("unfollow-9");
+	});
+	<% end %>
+
+	<% if current_user.follows?(@user) %> 
+	$('.following-btn-9').click(function () {
+	$('.following-btn-9').removeClass("unfollow-9");
+	$('.following-btn-9').addClass("follow-9");
+	});
+	<% else %>	
+	$('.following-btn-9').click(function () {
+	$('.following-btn-9').removeClass("follow-9");
+	$('.following-btn-9').addClass("unfollow-9");
+	});
+	<% end %>
+
+
+
+
+
+
+
+
+
+

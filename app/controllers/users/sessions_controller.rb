@@ -18,7 +18,6 @@ after_action :check_birthday, only: [:create]
  end
 
  def check_birthday
-  puts "aaaaaaaaaaa"
   @datatime = DateTime.now.strftime("%Y%m%d")
   @user = current_user
   @user.age =  (@datatime.to_i - @user.birthday.strftime("%Y%m%d").to_i) / 10000
