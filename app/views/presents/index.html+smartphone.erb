@@ -4,17 +4,18 @@
 
 <div id="header-sp">
 <style>body {background-color:#fcfcfc !important;</style>
+<div class="mypage-button"><%= link_to user_registration_path do %><i class="fa fa-user" aria-hidden="true"></i><% end %></div>
   <%if @result%>
     <%= form_for(@usernew, as: @usernew, url: registration_path(@usernew), html: { method: :put }) do |f| %>
     <%= f.hidden_field :latitude, :id=>"location_latitude_user" %>
     <%= f.hidden_field :longitude, :id=>"location_longitude_user" %>
 
-  <div class="reload-button-sp"> 
+  <div id="reload-button-sp" style="display:none;"> 
     <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %>
     <i class="fa fa-refresh fa-5x" aria-hidden="true"></i>
   <% end %>
   </div>
-  <div class="mypage-button"><%= link_to user_registration_path do %><i class="fa fa-user" aria-hidden="true"></i><% end %></div>
+  
   <h1>pie</h1>
   <% end %>
 
@@ -83,7 +84,7 @@ reader.readAsDataURL(this.files[0]);
 
 
 PullToRefresh.init({
-  mainElement: '.timeline-left-position-sp ul',
+  mainElement: '.reload-pull',
   onRefresh: function(){ window.location.reload(); }
 });
 
@@ -101,6 +102,8 @@ function success(pos) {
   document.getElementById('location_longitude').value = pos.coords.longitude;
   document.getElementById('location_latitude_user').value = pos.coords.latitude;
   document.getElementById('location_longitude_user').value = pos.coords.longitude;
+ var element_reload = document.getElementById('reload-button-sp').style.display='block';
+
 
 }
 
@@ -125,10 +128,12 @@ $(document).on('ready turbolinks:load',function() {
 
 
 <div class="main-tab-button clearfix">
+
 	<div class="tl-main-tab-button sort-select-sp">タイムライン</div>
 	<div class="geo-main-tab-button">付近を調べる</div>
 </div>
 
+<div class="reload-pull"></div>
 	<div class="main-tab-button-contents">
 		<div class="tab-sort-li show">
 
@@ -159,7 +164,6 @@ $(document).on('ready turbolinks:load',function() {
 <div><i class="fa fa-street-view fa-2x""></i></div>
 </div>
 <div class="clearfix"></div>
-
 <div class="pieloca-contents">
   <div class="tab-sort-p-li show">
 

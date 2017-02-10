@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .ptr--ptr {
+
+	margin-top:290px;
 	box-shadow:none !important;
 	
 }
@@ -19,6 +21,8 @@
 
 .ptr--refresh {
 	font-size:30px !important;
+	position:relative;
+	top:350px;
 	padding-bottom:30px;
 }
 
@@ -1001,8 +1005,24 @@ height:130px;
 }
 
 
-.reload-button-sp a {
+.left-button-sp a {
 	float:left;
+	width:100px;
+	height:100px;
+	color:#FF989F !important;
+	line-height:2em;
+	margin-left:20px;
+	margin-top:24px;
+	border:none;
+	background:none;
+	font-size:40px;
+	text-align:center;
+
+}
+
+
+#reload-button-sp a {
+	float:right;
 	width:100px;
 	height:100px;
 	color:#FF989F !important;
@@ -1011,20 +1031,23 @@ height:130px;
 	margin-top:18px;
 	border:none;
 	background:none;
-	font-size:45px;
+	font-size:40px;
 	text-align:center;
 
 }
 
-.reload-button-sp button{
-	float:left;
+#reload-button-sp button{
+	float:right;
+
 	width:100px;
 	height:100px;
 	color:#FF989F;
 	margin-left:20px;
-	margin-top:15px;
+	margin-top:13px;
 	border:none;
 	background:none;
+	font-size:10px;
+
 
 }
 .tab-about-get{
@@ -1330,13 +1353,12 @@ margin-right:30px;
 
 .main-tab-button {
 width:100%;
-   padding-top:35px;
    padding-bottom:35px;
    margin-bottom:20px;
    background-color:#FFF;
    border-bottom:1px solid #e0e0e0;
 	 position:fixed;
-	 top:130px;
+	 top:129px;
 	 z-index:2;
 
 }
@@ -1351,7 +1373,7 @@ width:100%;
    font-size:30px;
    line-height:3.3em;
    border-radius:10px;
-   color:#FF989F;
+   color:#cdcdcd;
    border:1px solid #EEE;
 
 }
@@ -1370,26 +1392,25 @@ width:100%;
 
 .pieloca {
 width:100%;
-margin-top:340px;
+margin-top:10px;
 }
 
 .pieloca div {
 	width : -webkit-calc(33% - 40px) ;
    width : calc(33% - 40px) ;
-   height:100px;
+   height:80px;
    margin-left:40px;
 margin-bottom:20px;
-
    float:left;
    text-align:center;
-   font-size:30px;
+   font-size:25px;
    line-height:3.8em;
-   border-radius:10px;
-   color:#FF989F;
+   border-radius:40px;
+   color:#cdcdcd;
    border:1px solid #EEE;
    background-color:#FFF;
-
 }
+
 
 .pieloca div + div {
    margin-left:24px;
@@ -1453,12 +1474,14 @@ color:#FF989F;
 }
 
 #header-sp h1 {
-font-size:50px;
+font-size:55px;
 color:#FF989F !important;
 text-align:center;
 font-weight:normal;
 line-height:2.5em;
-padding-right:120px;
+position:absolute;
+left:50px;
+margin:0 auto;
 	font-family: 'Comfortaa', cursive;
 
 }
@@ -3139,7 +3162,6 @@ float:left;
 margin-left:2px;
 padding-bottom:130px;
 	width:100%;
-	margin-top:330px;
 }
 
 .timeline-left-position-sp li {
@@ -3192,23 +3214,24 @@ padding-top:15px;
 	height:40px;
 	font-size:35px;	
 	margin-left:20px;
-	margin-right:20px;
 	text-align:right;
 	position:absolute;
 	bottom:15px;
 	right:15px;
 	z-index:2;
+	border: 5px solid #FF7D7C;
+	background-color: rgba(255,255,255,0.8);
+	padding-top:20px;
+
 }
 
 
 .get-price-sp span {
-	border-bottom:2px solid #FF7D7C;
-	font-weight:bold;
+color:#FF7D7C;
+font-weight:normal;
+	padding-left:30px;
+	padding-right:30px;
 	padding-bottom:10px;
-	text-shadow:
-0 0 25px #edf8ff,
-0 0 20px #edf8ff,
-0 0 0.40px #edf8ff;
 }
 
 
@@ -3910,8 +3933,8 @@ position: absolute;
 
 
 .get-post-user-avatar-sp {
-	width:100px;
-	height:100px;
+	width:80px;
+	height:80px;
 	overflow:hidden;
 	position:relative;
 	border-radius:50%;
@@ -3927,7 +3950,7 @@ position: absolute;
 
 .get-post-user-avatar-sp img {
   width: auto;
-	height:100px;
+height:80px;
 display: block;
 position: absolute;
   min-width: 100%;
@@ -4041,13 +4064,15 @@ position: absolute;
 .get-getimage-sp {
 
 	width : 100%;
-	height: -webkit-calc(100vw - 280px) ;
-	height: calc(100vw - 280px) ;
+	height: -webkit-calc(100vw - 420px) ;
+	height: calc(100vw - 420px) ;
 	overflow:hidden;
 	position:relative;
 	margin: 0 auto;
 	z-index:1;
-	border: 1px solid #EEE;
+	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
+
 }
 
 
@@ -4088,10 +4113,11 @@ position: absolute;
 }
 
 .get-post-user-title-sp h2 {
+
 -webkit-text-size-adjust: 100%; /* 2 */
     -ms-text-size-adjust: 100%; /* 2 */
 	margin-top:25px;
-	padding-left:20px;
+	padding-left:30px;
 	padding-right:20px;
 	font-size:30px;
 	font-weight:bold;
@@ -4102,7 +4128,7 @@ position: absolute;
 -webkit-text-size-adjust: 100%; /* 2 */
     -ms-text-size-adjust: 100%; /* 2 */
 	padding-top:35px;
-	padding-left:20px;
+	padding-left:30px;
 	padding-right:20px;
 	padding-bottom:25px;
 	font-size:30px;
@@ -4167,7 +4193,7 @@ margin-top:65px;
 	position:absolute;
 	right:0;
 	color:#FF7D7C !important;
-	font-size:31px;
+	font-size:23px;
 	border-radius:3px;
 }
 
@@ -4179,7 +4205,7 @@ margin-top:65px;
 	position:absolute;
 	right:0;
 	color:#FEB690 !important;
-	font-size:31px;
+	font-size:23px;
 	border-radius:3px;
 }
 

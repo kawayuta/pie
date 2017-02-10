@@ -32,6 +32,25 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'unicorn'
 
+gem 'carrierwave'
+gem 'rmagick'
+gem 'devise'
+gem 'record_with_operator'
+gem 'acts_as_votable'
+gem "socialization"
+gem "nokogiri"
+gem "mechanize"
+gem "font-awesome-rails"
+gem "chartkick"
+gem 'acts_as_commentable_with_threading'
+gem 'jquery-turbolinks'
+gem "kaminari"
+gem 'rack-user_agent'
+gem 'geocoder'
+gem 'geokit-rails'
+gem 'friendly_id', '~> 5.1.0'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
