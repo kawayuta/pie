@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .ptr--ptr {
 
 	margin-top:290px;
@@ -186,6 +187,14 @@ color:#FFF !important;
 }
 .action_room {
 height:105px;
+	background-color:#FBFBFC;
+}
+
+
+.action_room-pc {
+height:45px;
+
+border-top:1px solid #EEE;
 	background-color:#FBFBFC;
 }
 
@@ -1020,7 +1029,19 @@ height:130px;
 
 }
 
+#reload-button-pc button {
+	float:right;
 
+	width:100px;
+	height:30px;
+	background-color: #FF989F !important;
+	border:none;
+	border-radius:3px;
+	margin-top:8px;
+	margin-right:10px;
+	color:#FFF;
+
+}
 #reload-button-sp a {
 	float:right;
 	width:100px;
@@ -1273,6 +1294,76 @@ width:500px;
 
 }
 
+.location_get-pc ul{
+width:395px;
+	margin-top:10px;
+}
+.location_get-pc li {
+	width : 178px;
+   height : 148px ;
+   background-color:#FFF;
+   float:left;
+	margin-bottom:10px;
+	list-style:none;
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #eee;
+	border-radius:3px;
+	overflow:hidden;
+	position:relative;
+	z-index:2;
+margin-right:10px;
+
+
+}
+
+.location_get-pc li + li{
+}
+
+
+.location_get_pc_title {
+	font-size:12px;
+	margin-top:10px;
+	margin-left:10px;
+	margin-bottom:10px;
+}
+
+.location_get_pc_image {
+	width:100%;
+	height:110px;
+	position:relative;
+	overflow:hidden;
+}
+
+
+.location_get_pc_image img {
+
+  width: 110px;
+	height : auto;
+display: block;
+position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+     -moz-transform: translate3d(-50%, -50%, 0);
+           -ms-transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+
+.location_get_pc_price {
+float:right;
+text-align:right;
+font-size:13px;
+margin-right:10px;
+color:#FF7D7C;
+}
+
+
+
 .location_get {
 	margin-top:20px;
 }
@@ -1335,6 +1426,15 @@ text-align:right;
 font-size:30px;
 margin-right:30px;
 }
+
+
+.sort-select-pc {
+	background-color:#FF7D7C !important;
+	color:#FFF !important;
+	 box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05);
+
+}
+
 
 .sort-select-sp {
 	background-color:#FF7D7C !important;
@@ -2730,33 +2830,31 @@ border-bottom:2px solid rgba(255,125,124,0.3);
 #main-contents-wrap {
 position:relative;
 top:17px;
-	float:right;
-	width:850px;
+margin:0 auto;
+width:1000px;
 }
 
+#sidebar-bind {
+position:fixed;
+top:60px;
+width:200px;
+height:100vh;
+float:left;
+margin-right:15px;
+}
+
+#sidebar-bind h4 {
+	font-weight:normal;
+	color:#d0d0d0!important;
+	margin-bottom:10px;
+}
 #main-contents-wrap-sp {
 width:100%;
 position:relative;
 top:17px;
 }
-.tab{overflow:hidden;}
-.tab li{padding-top:5px;padding-bottom:5px;padding-left:15px;padding-right:15px;font-size:10px; margin-right:10px; border-radius:3px; background:#FFF;float:left;list-style:none;border: 1px solid #eee;
-}
-.tab li.select{
-background:#FFF;
-border: 1px solid #FF7D7C;
-	position:relative;
-	z-index:999;
-}
-.tab-2{overflow:hidden;}
-.tab-2 li{padding-top:15px;padding-bottom:15px;border-bottom: 2px solid #FFF; background:#FFF;float:left; margin-right:1px; list-style:none;}
-.tab-2 li.select{
-background:#FFF; border-bottom: 2px solid #FF7D7C;
-	position:relative;
-	z-index:999;
-}
-
 .content li{ list-style:none;}
+
 .hide {display:none;}
 .show {display:block;}
 
@@ -3144,16 +3242,18 @@ background-color:#FFF;
 
 .timeline-left-position {
 float:left;
-margin-left:2px;
-	width:550px;
+    width: 400px;
+    position:relative;
+    top:43px;
+    margin-left:215px;
 }
 
 .timeline-left-position li {
-padding-top:15px;
-	width:550px;
-	margin-bottom:20px;
+	width:400px;
+	margin-bottom:10px;
 	background-color:#FFF;
 	border-bottom: 1px solid #ECF2F3;
+	list-style:none;
 }
 
 
@@ -3177,17 +3277,6 @@ padding-top:15px;
 	overflow:hidden;
 	box-sizing: border-box;
 
-}
-
-
-.get-getimage {
-	width:550px;
-	max-height:300px;
-	overflow:hidden;
-}
-.get-getimage img{
-	width:550px;
-	height:auto;
 }
 
 
@@ -3222,6 +3311,8 @@ padding-top:15px;
 	border: 5px solid #FF7D7C;
 	background-color: rgba(255,255,255,0.8);
 	padding-top:20px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
+    transition: all .2s ease-in-out;
 
 }
 
@@ -3236,28 +3327,64 @@ font-weight:normal;
 
 
 .get-price {
-	
-	margin-top:5px;
+	border:2px solid #FF7D7C;
 	float:right;
-	height:40px;
-	font-size:11px;	
-	margin-left:20px;
-	margin-right:20px;
+	font-size:16px;	
+	margin-right:10px;
 	text-align:right;
+	position:relative;
+	top:-50px;
+	z-index:3;
+	background-color:rgba(255,255,255,0.8);
+	height:35px;
+		line-height:2.2em;
+	padding-left:20px;
+	padding-right:20px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
+    transition: all .2s ease-in-out;
+
 }
 
 .get-price span {
-	border-bottom:2px solid #FF7D7C;
+width:100%;
+display:block;
+text-align:center;
+color:#FF7D7C;
 
-	padding-bottom:10px;
 }
 
 .timeline-right-position {
+position:fixed;
+top:15px;
+padding-left:615px;
+float:right;
+	width:370px;
+	margin-top:43px;
+	margin-left:15px;
+}
+.main-tab-button-pc {
+	width:370px;
+
+}
+.main-tab-button-pc h2 {
+	float:left;
+font-size:14px;
+line-height:2.3em;
+font-weight:normal;
+color:#d0d0d0;
+}
+.main-tab-button-pc div {
+	
 	float:right;
-	width:280px;
-	position:relative;
-	top:-15px;
-	left:0px;
+	width:85px;
+	height:30px;
+	border-radius:3px;
+	text-align:center;
+	line-height:2.3em;
+	background-color: #EfEfEf;
+}
+.main-tab-button-pc div + div{
+margin-right:10px;
 }
 
 .timeline-right-position_box {
@@ -3417,10 +3544,9 @@ background-color:#FBFBFC;
 
 .likedislike-timeline-get {
 	float:left;
-width:230px;
+width:250px;
 height:30px;
-margin-left:8px;
-margin-top:5px;
+margin-top:10px;
 }
 
 .likedislike-timeline-get-sp {
@@ -3447,10 +3573,10 @@ width:115px;
 height:20px;
 color:#FF7D7C;
 float:left;
--moz-transform: scale(0.7,0.7);
--webkit-transform: scale(0.7,0.7);
--o-transform: scale(0.7,0.7);
--ms-transform: scale(0.7,0.7);
+-moz-transform: scale(0.65,0.65);
+-webkit-transform: scale(0.65,0.65);
+-o-transform: scale(0.65,0.65);
+-ms-transform: scale(0.65,0.65);
 }
 
 
@@ -3459,10 +3585,10 @@ width:115px;
 height:20px;
 color:#999;
 float:left;
--moz-transform: scale(0.7,0.7);
--webkit-transform: scale(0.7,0.7);
--o-transform: scale(0.7,0.7);
--ms-transform: scale(0.7,0.7);
+-moz-transform: scale(0.65,0.65);
+-webkit-transform: scale(0.65,0.65);
+-o-transform: scale(0.65,0.65);
+-ms-transform: scale(0.65,0.65);
 
 }
 
@@ -3602,6 +3728,48 @@ content: "欲しい！";
 font-size:18px;
 margin-left:10px;
 }
+
+
+
+.likedislike-dislike-timeline-eat a i{
+width:135px;
+
+height:20px;
+	float:left;
+	color:#77B4BE;
+-moz-transform: scale(0.7,0.7);
+-webkit-transform: scale(0.7,0.7);
+-o-transform: scale(0.7,0.7);
+-ms-transform: scale(0.7,0.7);
+}
+
+
+
+.likedislike-nodislike-timeline-eat a i{
+width:135px;
+
+height:20px;
+	float:left;
+	color:#999;
+-moz-transform: scale(0.7,0.7);
+-webkit-transform: scale(0.7,0.7);
+-o-transform: scale(0.7,0.7);
+-ms-transform: scale(0.7,0.7);
+}
+
+.likedislike-dislike-timeline-eat a i:after {
+content: "食べたい！";
+font-size:18px;
+margin-left:10px;
+}
+.likedislike-nodislike-timeline-eat a i:after {
+content: "食べたい！";
+font-size:18px;
+margin-left:10px;
+}
+
+
+
 
 .likedislike-dislike-timeline-sp a i{
 width:115px;
@@ -3901,15 +4069,16 @@ padding-top:13px;
 
 
 .get-post-user-avatar {
-	width:50px;
-	height:50px;
+	width:30px;
+	height:30px;
 	overflow:hidden;
 	position:relative;
 	border-radius:5px;
 	border: 1px solid #EEE;
 	z-index:2;
-	margin-left:15px;
-	margin-right:15px;
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:10px;
 	float:left;
 	
 }
@@ -3917,7 +4086,7 @@ padding-top:13px;
 
 .get-post-user-avatar img {
   width: auto;
-	height:50px;
+	height:30px;
 display: block;
 position: absolute;
   min-width: 100%;
@@ -4001,8 +4170,8 @@ position: absolute;
 	margin-left:20px;
 }
 #get-poster-profile {
-	width:550px;
-	height:65px;
+	width:400px;
+	height:50px;
 	border-bottom:1px solid #EEE;
 	position:relative;
 }
@@ -4016,8 +4185,9 @@ position: absolute;
 .get-post-user-username {
 	float:left;
 	position:relative;
-	top:5px;
-	font-weight:bold;
+	top:15px;
+	color:#FF989F;
+
 }
 
 
@@ -4031,22 +4201,19 @@ position: absolute;
 
 
 .get-getimage {
-	width:568px;
-	height:525px;
+  	width: 400px;
+	height:225px;
 	overflow:hidden;
 	position:relative;
 	margin: 0 auto;
-	float:right;
-	border-radius:3px;
 	z-index:2;
-	border: 1px solid #EEE;
-	margin-bottom:15px;
+	border-bottom: 1px solid #EEE;
 }
 
 
 .get-getimage img {
-  width: 525px;
-	height:auto;
+width: auto;
+height:auto;
 display: block;
 position: absolute;
   min-width: 100%;
@@ -4057,7 +4224,6 @@ position: absolute;
      -moz-transform: translate3d(-50%, -50%, 0);
            -ms-transform: translate(-50%, -50%);
           transform: translate3d(-50%, -50%, 0);
-	
 }
 
 
@@ -4095,6 +4261,7 @@ position: absolute;
 
 
 .get-post-user-title {
+width:235px;
 	margin-top:15px;
 	padding-left:15px;
 	padding-right:15px;
@@ -4104,6 +4271,7 @@ position: absolute;
 
 
 .get-post-user-body {
+width:235px;
 	
 	padding-top:12px;
 	padding-left:15px;
@@ -4137,10 +4305,11 @@ position: absolute;
 
 .get-post-user-time a {
 margin-top:5px;
-	margin-right:20px;
+	margin-right:10px;
 	float:right;
 	color:#ccc !important;
 	text-decoration:none;
+	font-size:11px;
 }
 
 
@@ -4154,8 +4323,8 @@ margin-top:15px;
 }
 
 .tl-post-type-get {
-margin-top:35px;
-	margin-right:20px;
+margin-top:25px;
+	margin-right:10px;
 	float:right;
 	position:absolute;
 	right:0;
@@ -5249,8 +5418,17 @@ padding-top:10px;
 background-color:#FFF;
 }
 
+.post-notfound-user-loca {
+	width:200px;
+	margin-top:10px;
+	margin-bottom:10px;
+	text-align:center;
+	font-size:11px;
+}
+
+
 .post-notfound {
-	width:580px;
+	width:370px;
 	margin-top:60px;
 	text-align:center;
 }
@@ -5300,3 +5478,5 @@ padding-bottom:8px;
 border-bottom:1px solid #EEE;
 font-weight:normal;
 }
+
+

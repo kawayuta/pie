@@ -148,12 +148,14 @@
         </div>
 
   </div>
-        <div class="get-post-user-title"><span><%= get.title %></span></div>
-        <div class="get-post-user-body"><%= get.body %></div>
         <div class="clearfix">
           <div class="get-getimage">
               <%= link_to image_tag(get.getimage.url, :size => "600x600"),get.getimage.url, :rel => "lightbox" %>
           </div>
+
+        <div class="get-post-user-title"><span><%= get.title %></span></div>
+        <div class="get-post-user-body"><%= get.body %></div>
+      <div class="action_room-pc">
 
          <div class="likedislike-timeline-get">
                                   <% if current_user.voted_up_on? get %>
@@ -169,11 +171,13 @@
                                                   <% end %>
                                           </div>
                                           <% end %>
+        <% if get.get_cat == "shoping"%>
+
                                               <% if current_user.voted_down_on? get %>
                                                   <div class="likedislike-dislike-timeline">
                                                       
                                                       <%= link_to dislike_get_path(get), method: :put do %>
-                                                          <i class="fa fa-heart fa-2x"></i>
+                                                          <i class="fa fa-star fa-2x"></i>
 
                                                           <% end %>
                                                   </div>
@@ -181,13 +185,36 @@
                                                       <div class="likedislike-nodislike-timeline">
                                                           
                                                           <%= link_to dislike_get_path(get), method: :put do %>
+                                                              <i class="fa fa-star fa-2x"></i>
+                                                              <% end %>
+                                                      </div>
+                                                      <% end %>
+        <% elsif get.get_cat == "eating"%>
+
+                                              <% if current_user.voted_down_on? get %>
+                                                  <div class="likedislike-dislike-timeline-eat">
+                                                      
+                                                      <%= link_to dislike_get_path(get), method: :put do %>
+                                                          <i class="fa fa-heart fa-2x"></i>
+
+                                                          <% end %>
+                                                  </div>
+                                                  <% elsif %>
+                                                      <div class="likedislike-nodislike-timeline-eat">
+                                                          
+                                                          <%= link_to dislike_get_path(get), method: :put do %>
                                                               <i class="fa fa-heart fa-2x"></i>
                                                               <% end %>
                                                       </div>
-                                                      <% end %> </div>
+                                                      <% end %>
+
+
+        <%end%>
+                                                      </div>
 
         <div class="get-price"><span>¥ <%= get.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,') %></span></div>
-        <div class="get-shopname"><span><%= get.shopcat %></span></div>
+                                                      </div>
+
         </div>
         
     </li>

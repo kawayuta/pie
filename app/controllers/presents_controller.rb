@@ -122,6 +122,7 @@ class PresentsController < ApplicationController
 
         @users_all_id = @users.pluck(:id)
         @users_all_id.delete(current_user.id)
+        @mydelete_allusers = User.where(:id => @users_all_id)
 
              
 

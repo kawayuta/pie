@@ -35,31 +35,27 @@ a {
 
 }
 #header {
+	position: fixed;
+	top:0;
+	z-index:5;
 	width:100%;
-	height:85px;
+	height:45px;
 	background-color: #FFF;
 	border-bottom:1px solid #ECF2F3;
 }
 #header h1 {
-	width:150px;
 	text-align: left;
-	font-size:22px;
-	line-height:3.8em;
+	font-size:20px;
+	line-height:2.2em;
 	font-weight: normal;
 	letter-spacing: 2px;
 	text-decoration: none;
 	color:#FF7D7C;
 	float:left;
+
+    font-family: 'Comfortaa', cursive;
 }
 
-#header h1:before {
-
-	content: "\f0e7";
-  font-family: FontAwesome;
-	color:#FF7D7C;
-	font-size:22px;
-	margin-right:20px;
-}
 
 #header h1 a {
 	text-decoration: none;
@@ -70,7 +66,7 @@ a {
 	color:#FF7D7C;
 }
 #header-box {
-	width:1118px;
+	max-width:1000px;
 	margin:0 auto;
 }
 
@@ -122,15 +118,15 @@ text-decoration: none;
 
 .top-profile-image {
 	float:right;
-	width:50px;
-	height:50px;
+	width:30px;
+	height:30px;
 	background-color:#EEE;
 	border-radius:5px;
 	border:1px solid #EEE;
 	overflow:hidden;
 	position: relative;
 	z-index:2;
-	margin-top:19px;
+	margin-top:7px;
 }
 
 .top-profile-image img {
@@ -407,7 +403,7 @@ width:100px;
 	margin-bottom: 10px;
 }
 .befriends {
-	width:280px;
+	width:200px;
 	height:57px;
 	margin-bottom:15px;
 	color:#666;
@@ -419,8 +415,8 @@ width:100px;
 
 .befriends-avatar {
 	
-	width:40px;
-	height:40px;
+	width:35px;
+	height:35px;
 	background-color:#EEE;
 	border-radius:5px;
 	border:1px solid #EEE;
@@ -428,6 +424,8 @@ width:100px;
 	overflow:hidden;
 	position:relative;
 	z-index:2;
+	margin-top: 5px;
+	margin-left: 5px;
 	margin-right: 10px;
 }
 
@@ -457,7 +455,7 @@ position: absolute;
 .befriends-followees {
 	position: absolute;
 	bottom:0;
-	left:67px;
+	left:53px;
 	float: left;
 }
 .befriends-followees_count {
@@ -478,7 +476,7 @@ position: absolute;
 	float: left;
 	position: absolute;
 	bottom:0;
-	left:147px;
+	left:127px;
 }
 .befriends-followers_count {
 	color:#CBCBCB;
@@ -490,6 +488,101 @@ position: absolute;
 }
 
 .befriends-followers:after {
+	content:"FOLLOWER";
+	color:#CBCBCB;
+	font-size:9px;
+
+}
+
+
+
+
+.befriends-loca {
+	width:200px;
+	height:57px;
+	margin-bottom:10px;
+	color:#666;
+	float:left;
+	background-color: #FFF;
+	position: relative;
+	border-radius: 3px;
+}
+
+.befriends-avatar-loca {
+	
+	width:35px;
+	height:35px;
+	background-color:#EEE;
+	border-radius:5px;
+	border:1px solid #EEE;
+	float:left;
+	overflow:hidden;
+	position:relative;
+	z-index:2;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 10px;
+}
+
+
+.befriends-avatar-loca img{
+	
+  	width: auto;
+	height:40px;
+display: block;
+position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+     -moz-transform: translate3d(-50%, -50%, 0);
+           -ms-transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
+}
+.befrieneds-username-loca {
+	height:10px;
+	font-weight: bold;
+	color: #666;
+	font-size:11px;
+	margin-top: 3px;
+}
+.befriends-followees-loca {
+	position: absolute;
+	bottom:0;
+	left:53px;
+	float: left;
+}
+.befriends-followees-loca_count {
+	color:#CBCBCB;
+	font-size:11px;
+	position: relative;
+	top:3px;
+	width: 55px;
+	text-align: center;
+}
+.befriends-followees-loca:after {
+	content:"FOLLOWING";
+	color:#CBCBCB;
+	font-size:9px;
+
+}
+.befriends-followers-loca {
+	float: left;
+	position: absolute;
+	bottom:0;
+	left:127px;
+}
+.befriends-followers-loca_count {
+	color:#CBCBCB;
+	font-size:11px;
+	width: 52px;
+	position: relative;
+	top:3px;
+	text-align: center;
+}
+
+.befriends-followers-loca:after {
 	content:"FOLLOWER";
 	color:#CBCBCB;
 	font-size:9px;
