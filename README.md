@@ -1,24 +1,13 @@
-# README
+# Pie
+<img src ="https://raw.githubusercontent.com/mnshey/pie/master/readme_image/f1.png" />
+<img src ="https://raw.githubusercontent.com/mnshey/pie/master/readme_image/f2.png" />
+<img src ="https://raw.githubusercontent.com/mnshey/pie/master/readme_image/f3.png" />
+<br />
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Setup
+sudo mysql.start.sever<br />
+check the "database.yml" file.<br />
+"database","username","password","socket"<br />
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+bundle install<br />
+rails s<br />
