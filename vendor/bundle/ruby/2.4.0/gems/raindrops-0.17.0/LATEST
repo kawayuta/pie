@@ -1,0 +1,17 @@
+=== raindrops 0.17.0 - rack 2.x updates / 2016-07-31 15:19 UTC
+
+  This release features minor updates to support rack 2.x
+  while maintaining support for rack 1.2 and later.
+  As a result, Ruby 1.8.6 compatibility is gone, but
+  Ruby 1.8.7 probably still works, for now.
+
+  There's also a minor warning fix, doc updates, and
+  the homepage now supports HTTPS (HTTP remains supported)
+
+  5 changes since raindrops 0.16.0:
+        drop Rack::Utils.bytesize dependency
+        gemspec: bump Rack dependency
+        linux_inet_diag: GCC attribute format check
+        use HTTPS and move homepage to https://bogomips.org/raindrops/
+        examples: add yahns config, zbatery is abandoned
+
